@@ -1,0 +1,13 @@
+import * as THREE from 'three';
+const M=(color,rough=.6,metal=.08,extra={})=>new THREE.MeshPhysicalMaterial({color,roughness:rough,metalness:metal,...extra});
+function signTex(title,sub,color){const c=document.createElement('canvas');c.width=768;c.height=220;const x=c.getContext('2d');x.fillStyle=color;x.fillRect(0,0,c.width,c.height);x.fillStyle='#fff';x.textAlign='center';x.font='900 72px system-ui';x.fillText(title,384,92);x.font='600 30px system-ui';x.fillStyle='#e9f7ff';x.fillText(sub,384,152);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;}
+export class Amenities{
+  constructor(scene){this.scene=scene;this.group=new THREE.Group();scene.add(this.group);this.points=[{name:'REDLINE MART',x:145,z:185,c:0x2ca66f},{name:'YILAN 24',x:-330,z:-110,c:0x287bd9},{name:'NIGHT MART',x:520,z:420,c:0xe34848},{name:'RIVER STOP',x:-610,z:310,c:0xd69223}];this.build();}
+  build(){for(const p of this.points)this._store(p);}
+  _store(p){const g=new THREE.Group();g.position.set(p.x,0,p.z);const wall=M(0xe5e4df,.84,.02),trim=M(0x252b31,.46,.42),glass=M(0x10212c,.18,.52,{transparent:true,opacity:.62,transmission:.12,clearcoat:.9});
+    const shell=new THREE.Mesh(new THREE.BoxGeometry(13,4.2,8),wall);shell.position.y=2.1;shell.castShadow=true;shell.receiveShadow=true;g.add(shell);const roof=new THREE.Mesh(new THREE.BoxGeometry(13.8,.32,8.8),trim);roof.position.y=4.35;g.add(roof);
+    const front=new THREE.Mesh(new THREE.PlaneGeometry(10.6,2.75),glass);front.position.set(0,1.72,-4.02);g.add(front);const door=new THREE.Mesh(new THREE.PlaneGeometry(1.65,2.55),glass.clone());door.position.set(3.75,1.45,-4.035);g.add(door);
+    const band=new THREE.Mesh(new THREE.BoxGeometry(12.7,.38,.22),new THREE.MeshBasicMaterial({color:p.c,toneMapped:false}));band.position.set(0,3.58,-4.12);g.add(band);const sign=new THREE.Mesh(new THREE.PlaneGeometry(6.8,1.95),new THREE.MeshBasicMaterial({map:signTex(p.name,'24H · YILAN CITY',`#${p.c.toString(16).padStart(6,'0')}`),toneMapped:false}));sign.position.set(0,5.55,-4.22);g.add(sign);
+    const lit=new THREE.PointLight(0xffe1b6,18,22,2);lit.position.set(0,2.4,-2.8);g.add(lit);for(let i=-3;i<=3;i++){const aisle=new THREE.Mesh(new THREE.BoxGeometry(.7,1.55,2.4),M(i%2?0x6d7e89:0x8b7b66,.78,.04));aisle.position.set(i*1.25,.78,.15);g.add(aisle);}const parking=new THREE.Mesh(new THREE.PlaneGeometry(18,11),M(0x15191d,.34,.03,{clearcoat:.62,clearcoatRoughness:.1}));parking.rotation.x=-Math.PI/2;parking.position.set(0,.025,-8.0);g.add(parking);for(let i=-2;i<=2;i++){const stripe=new THREE.Mesh(new THREE.PlaneGeometry(.08,4.8),new THREE.MeshBasicMaterial({color:0xe8ecee,toneMapped:false}));stripe.rotation.x=-Math.PI/2;stripe.position.set(i*2.6,.04,-8);g.add(stripe);}this.group.add(g);
+  }
+}
