@@ -46,3 +46,26 @@ npm run build
 目前是 Three.js / WebGL 的高細節瀏覽器遊戲原型，4K ULTRA 指的是高解析渲染、陰影與場景密度等級；它仍不是 AAA 遊戲引擎的原生 4K 高模資產。專案架構保留後續改用高品質 glTF / PBR 資產或轉進 Unreal Engine 的空間。
 
 雪山隧道採公開尺度與外觀概念的遊戲化場景；內部維運、救援與執法配置並非真實重建。
+
+## Cloudflare deployment fix (v0.8.1)
+
+This build is safe to deploy when Cloudflare's Deploy command is only:
+
+```bash
+npx wrangler deploy
+```
+
+`wrangler.toml` now contains a `[build]` hook that runs `bun run build` first, so `dist/` exists before static assets are uploaded.
+
+Recommended Cloudflare Workers Builds settings:
+
+- Build command: leave blank (or `bun run build`; leaving it blank avoids a duplicate build)
+- Deploy command: `npx wrangler deploy`
+- Root directory: project root
+
+You can also deploy locally with:
+
+```bash
+bun install
+bun run deploy
+```
