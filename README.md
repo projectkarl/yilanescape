@@ -1,34 +1,64 @@
-# YILAN // REDLINE v0.8 — Immersive Damage Build
+# YILAN // REDLINE v1.0 — Realism City
 
-宜蘭市開放世界雨夜追緝瀏覽器遊戲原型。v0.8 延續 v0.7 的動態天氣、日夜、活城市、下車徒步、換乘街車、油耗、加油、車庫解鎖、國道 5 號與可連續駛入的雪山隧道，進一步強化車內與事故現場的真實感。
+宜蘭市高擬真瀏覽器開放世界駕駛版本。這一版的核心原則是「清楚、擬真、正確街廓」，不再用顆粒、重霧或 Bloom 掩蓋模型細節。
 
-## v0.8 新增
+## v1.0 主要改進
 
-- 車內擋風玻璃雨滴層，雨勢會跟動態天氣同步。
-- 雙雨刷依豪雨／一般雨／細雨自動調整速度，進雪山隧道會停止。
-- 玩家撞擊一般車後，事故車會煞停並開啟雙黃警示燈一段時間，而不是立刻恢復車流。
-- 事故會驚動附近行人；高強度事故會生成逃離反應。
-- 徒步玩家現在會被一般車流撞擊：短暫失衡、擊退、扣血與體力損耗。
-- 中高強度碰撞新增玻璃碎片效果。
-- 雨天輪胎水霧密度會依實際雨勢調整，並加入局部積水擴散水圈。
-- 一般車流加入遠距離可見性／更新裁切，降低高畫質模式的無效負載。
-- 宜蘭道路細節新增：公車候車亭、凸面鏡、交通錐、路邊設備箱。
-- 原本 4K ULTRA、6 款解鎖車、機車／巴士／廂型車／皮卡、行人、紅綠燈、車損、車內視角、動態天氣、加油與雪山隧道全部保留。
+- 預設使用清晰白天／傍晚光線，動態天氣仍保留，但霧量大幅降低。
+- 完全取消強制 Bloom 與底層霧粒子；4K 模式以原生幾何、PBR、陰影與高 DPR 呈現。
+- 道路改成連續曲線 ribbon geometry，不再以一節一節的方盒拼路。
+- OSM 查詢擴充：道路、建築、鐵路、水道、商店／設施 POI。
+- 宜蘭離線備援地圖重畫，加入中山路、宜興路、光復路、神農路、民權路、復興路、泰山路、女中路、東港路、健康路、縣民大道與舊城區道路。
+- 建築物使用 OSM footprint，近距離建築增加：窗框、玻璃、店面、招牌、遮雨棚、陽台、冷氣、屋頂水塔、天線與不同台灣常見外牆材質。
+- 道路材質重做為低噪點 PBR：細節來自正常貼圖／粗糙度／裂縫與修補紋理，不再使用全畫面隨機像素顆粒。
+- 人物改為完整比例肢體：頭、頸、軀幹、骨盆、上／下肢、手腳、頭髮、衣物、背包、雨傘，並改善走路／跑步關節動畫。
+- 玩家角色同步升級，徒步時不再是簡單 Capsule 人形。
+- 路上車輛重做：圓角車身、車窗、後視鏡、門把、車牌、燈具、輪框、輪胎、機車騎士、公車／廂型車／皮卡差異。
+- 玩家車輛增加：圓角車身、側窗、後視鏡、門把、前進氣口、鈑件縫、車牌與更多近距離細節。
+- 太陽陰影會跟隨玩家移動，避免離開出生點後失去高品質動態陰影。
+- 國道 5 號、頭城方向與雪山隧道系統完整保留。
+- 手機橫向操作、PWA 加入主畫面、Cloudflare Workers/Static Assets 部署流程完整保留。
+
+## 地圖與 Google 參考方式
+
+Google Maps / 街景僅用於人工核對「道路方向、城市密度、建築尺度、路口與台灣街景視覺」；遊戲不抓取、不封裝、不重新散布 Google 地圖、衛星圖或街景影像。
+
+可部署的道路／建築幾何主要來自 OpenStreetMap / Overpass；離線備援則以宜蘭真實主要道路方向重新整理，不使用舊版棋盤式假城市。
+
+## 畫質模式
+
+- `MOBILE REAL`：手機橫向，降低物件密度但保持清楚。
+- `REALISM`：桌機預設，無 Bloom、無顆粒，2K 級清晰感。
+- `PHOTO`：提高 DPR、陰影與建築細節。
+- `4K CLEAN`：4096 shadow map、最高街景／交通／人物密度，仍不使用強制模糊後製。
+
+切換畫質：`Q`
 
 ## 操作
 
-- `W / S`：加速／煞車；徒步前進／後退
+- `W / S`：加速 / 煞車，徒步時前後移動
 - `A / D`：轉向
-- `SPACE`：手煞車；徒步衝刺
-- `E`：上下車／換乘街車
-- `F`：加油／停止加油
-- `C`：切換第三人稱／車內／電影鏡頭
-- `G`：私人車庫
-- `Q`：ECO / HIGH / CINEMA / 4K ULTRA
+- `SPACE`：手煞車 / 徒步衝刺
+- `E`：上下車 / 換乘
+- `F`：加油
+- `C`：第三人稱 / 座艙 / 電影視角
+- `G`：車庫
+- `Q`：畫質
 - `T`：測試下一種天氣
-- `R`：返回宜蘭車站區
+- `R`：重置
 
-## 啟動
+## Cloudflare 部署
+
+Cloudflare Build / Deploy 可維持：
+
+```text
+Build command: 留空
+Deploy command: npx wrangler deploy
+```
+
+`wrangler.toml` 的 `[build] command = "npm run build"` 會先產生 `dist/` 再上傳。
+
+本機：
 
 ```bash
 npm install
@@ -39,33 +69,5 @@ npm run dev
 
 ```bash
 npm run build
-```
-
-## 技術定位
-
-目前是 Three.js / WebGL 的高細節瀏覽器遊戲原型，4K ULTRA 指的是高解析渲染、陰影與場景密度等級；它仍不是 AAA 遊戲引擎的原生 4K 高模資產。專案架構保留後續改用高品質 glTF / PBR 資產或轉進 Unreal Engine 的空間。
-
-雪山隧道採公開尺度與外觀概念的遊戲化場景；內部維運、救援與執法配置並非真實重建。
-
-## Cloudflare deployment fix (v0.8.1)
-
-This build is safe to deploy when Cloudflare's Deploy command is only:
-
-```bash
 npx wrangler deploy
-```
-
-`wrangler.toml` now contains a `[build]` hook that runs `bun run build` first, so `dist/` exists before static assets are uploaded.
-
-Recommended Cloudflare Workers Builds settings:
-
-- Build command: leave blank (or `bun run build`; leaving it blank avoids a duplicate build)
-- Deploy command: `npx wrangler deploy`
-- Root directory: project root
-
-You can also deploy locally with:
-
-```bash
-bun install
-bun run deploy
 ```

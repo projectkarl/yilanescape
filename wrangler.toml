@@ -4,7 +4,7 @@ compatibility_date = "2026-09-01"
 # Cloudflare Workers Builds may call only `npx wrangler deploy`.
 # This custom build hook guarantees Vite creates ./dist before Wrangler uploads assets.
 [build]
-command = "bun run build"
+command = "npm run build"
 
 [assets]
 directory = "./dist"

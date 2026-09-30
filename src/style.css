@@ -15,3 +15,41 @@
 
 /* v0.7 — dynamic world */
 .world-state{display:flex;gap:7px;align-items:center;margin-top:7px;font-size:9px;letter-spacing:.13em}.world-state b{font-variant-numeric:tabular-nums;color:#e8f7ff}.world-state span{padding:2px 6px;border:1px solid rgba(255,255,255,.12);border-radius:10px;opacity:.66;background:rgba(255,255,255,.035)}@media(max-width:800px),(pointer:coarse){.world-state{font-size:8px;margin-top:5px}}
+
+/* v0.9 — crisp render / installable landscape layout */
+html,body,#app{width:100%;height:100%;min-width:100%;min-height:100%;overscroll-behavior:none}
+#game{position:fixed;inset:0;width:100vw;height:100dvh;image-rendering:auto}
+.loading-card{position:relative;z-index:2}
+.loading-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.loading-card .loading-actions button.secondary{margin:0;height:38px;background:rgba(255,255,255,.055);color:#eaf4fa;border-color:rgba(255,255,255,.16);font-size:9px;letter-spacing:.10em}
+.loading-card .loading-actions button.secondary:hover{background:rgba(255,255,255,.11);transform:none}
+.install-hint{margin-top:9px;padding:8px 10px;border:1px solid rgba(126,205,255,.18);background:rgba(77,160,213,.08);border-radius:4px;font-size:9px;line-height:1.5;color:#ccecff}
+.rotate-hint{display:none;position:fixed;inset:0;z-index:80;align-items:center;justify-content:center;background:rgba(2,5,8,.96);padding:24px;color:#f4f8fb;text-align:center}
+.rotate-card{width:min(320px,86vw);padding:24px 20px;border:1px solid rgba(255,255,255,.13);background:linear-gradient(160deg,rgba(19,30,39,.94),rgba(5,9,13,.97));box-shadow:0 26px 80px #000;border-radius:12px}
+.rotate-phone{font-size:54px;line-height:1;transform:rotate(90deg);opacity:.8;margin-bottom:17px}.rotate-card strong{display:block;font-size:18px;letter-spacing:.08em}.rotate-card span{display:block;margin-top:8px;font-size:11px;line-height:1.65;opacity:.58}.rotate-card button{margin-top:17px;width:100%;height:42px;border:1px solid rgba(255,255,255,.22);border-radius:6px;background:#eef6fa;color:#081018;font-weight:900}
+
+@media (pointer:coarse) and (orientation:portrait){.rotate-hint{display:flex}}
+
+@media (pointer:coarse) and (orientation:landscape){
+  .hud{height:100dvh;width:100vw;overflow:hidden}
+  .top-left{left:max(8px,env(safe-area-inset-left));top:max(8px,env(safe-area-inset-top));padding:8px 10px;min-width:174px;max-width:200px}
+  .brand{font-size:11px}.district{font-size:7px;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.world-state{font-size:7px;margin-top:4px}.quality{display:none}
+  .wanted{right:max(8px,env(safe-area-inset-right));top:max(8px,env(safe-area-inset-top));min-width:142px;padding:7px 9px}.wanted-copy span{font-size:7px}.wanted-copy b{font-size:8px}.wanted strong{font-size:15px;margin-top:2px}
+  .alert-strip{top:max(10px,env(safe-area-inset-top));font-size:8px}.message{display:none}
+  .minimap{width:104px;height:104px;left:max(10px,env(safe-area-inset-left));bottom:78px;padding:5px}
+  .speedometer{width:112px;height:112px;right:max(10px,env(safe-area-inset-right));bottom:76px}.dial:after{inset:6px}.tick{top:5px;height:7px;transform-origin:1px 51px}.speed{inset:25px 8px 0}.speed strong{font-size:29px}.speed small{font-size:7px}.gear{bottom:17px;font-size:6px}.gear b{font-size:11px}
+  .steer{left:max(10px,env(safe-area-inset-left));bottom:max(10px,env(safe-area-inset-bottom));gap:6px}.steer button{width:54px;height:54px;font-size:19px}
+  .pedals{right:max(10px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom));gap:6px}.pedals button{width:52px;height:52px}.pedals .gas{width:62px;height:62px}
+  .handbrake{right:max(84px,calc(env(safe-area-inset-right) + 84px));bottom:78px;width:40px;height:40px;font-size:8px}
+  .action-mobile,.fuel-mobile,.garage-mobile{display:block;right:auto;bottom:max(10px,env(safe-area-inset-bottom));width:48px;height:34px;border-radius:17px}
+  .action-mobile{left:calc(50% - 78px)}.fuel-mobile{left:calc(50% - 24px)}.garage-mobile{left:calc(50% + 30px)}
+  .status,.desktop-help{display:none}
+  .garage-shell{width:min(92vw,900px);max-height:90dvh;padding:12px}.garage-head h2{font-size:20px}.garage-head p{display:none}.garage-meta{margin:10px 0}.car-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.car-card{min-height:104px;padding:8px}.car-silhouette{height:47px}.card-copy strong{font-size:13px}.card-copy small,.card-copy span{font-size:7px}.car-detail{display:none}
+}
+
+@media (pointer:coarse) and (orientation:landscape) and (max-height:390px){
+  .top-left{max-width:160px}.district{max-width:150px}.minimap{width:88px;height:88px;bottom:67px}.speedometer{width:96px;height:96px;bottom:65px}.speed strong{font-size:25px}.speed{inset:21px 7px 0}.gear{bottom:14px}.steer button{width:48px;height:48px}.pedals button{width:47px;height:47px}.pedals .gas{width:56px;height:56px}.handbrake{bottom:65px;width:36px;height:36px}.alert-strip{display:none}
+}
+@media (pointer:coarse) and (orientation:landscape) and (max-height:450px){
+  .loading-title{font-size:42px}.loading-en{font-size:17px;margin-top:7px}.loading-eyebrow{margin-bottom:8px}.loading-card{margin-top:18px;padding-top:10px}.loading-card button{height:42px}.loading-sub{display:none}.loading-card small{font-size:7px;margin-top:7px}.loading-actions{margin-top:6px}.loading-card .loading-actions button.secondary{height:32px}
+}

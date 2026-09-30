@@ -1,8 +1,4 @@
 import * as THREE from 'three';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import './style.css';
 import { QUALITY } from './game/config.js';
@@ -26,27 +22,35 @@ import { Amenities } from './game/amenities.js';
 import { CARS, getCar, Progression } from './game/garage.js';
 
 const canvas=document.querySelector('#game');
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});
-renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.72;
-const scene=new THREE.Scene();scene.background=new THREE.Color(0x071019);scene.fog=new THREE.FogExp2(0x0a141b,.00155);
-const camera=new THREE.PerspectiveCamera(62,innerWidth/innerHeight,.1,3600);
-const hemi=new THREE.HemisphereLight(0x7f9fb6,0x11100f,.72);scene.add(hemi);
-const moon=new THREE.DirectionalLight(0xd8e9ff,2.25);moon.position.set(-160,240,-90);moon.castShadow=true;moon.shadow.camera.left=-190;moon.shadow.camera.right=190;moon.shadow.camera.top=190;moon.shadow.camera.bottom=-190;moon.shadow.camera.near=1;moon.shadow.camera.far=520;scene.add(moon);
-const cityGlow=new THREE.DirectionalLight(0xffaa72,.42);cityGlow.position.set(90,50,100);scene.add(cityGlow);
-const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;pmrem.dispose();
+const coarsePointer=matchMedia('(pointer:coarse)').matches;
+const safeMode=new URLSearchParams(location.search).has('safe');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance',precision:'highp',stencil:false});
+renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;renderer.shadowMap.autoUpdate=true;
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x142630);scene.fog=new THREE.FogExp2(0x8ca2ac,.000002);
+const camera=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.08,9000);
+const hemi=new THREE.HemisphereLight(0xa9c6d2,0x24201d,.92);scene.add(hemi);
+const moon=new THREE.DirectionalLight(0xfff4df,1.45);const sunTarget=new THREE.Object3D();scene.add(sunTarget);moon.target=sunTarget;moon.position.set(-160,240,-90);moon.castShadow=true;moon.shadow.camera.left=-190;moon.shadow.camera.right=190;moon.shadow.camera.top=190;moon.shadow.camera.bottom=-190;moon.shadow.camera.near=1;moon.shadow.camera.far=620;moon.shadow.bias=-.00008;moon.shadow.normalBias=.018;scene.add(moon);
+const cityGlow=new THREE.DirectionalLight(0xffb47c,.30);cityGlow.position.set(90,50,100);scene.add(cityGlow);
+try{const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),.02).texture;pmrem.dispose();}catch(e){console.warn('Environment reflections disabled',e);}
 
-let quality=innerWidth<800?0:1;
+let quality=coarsePointer?0:1;
 let cityData,city,highway,amenities,environment,activeCar,avatar,pursuit,traffic,signals,pedestrians,fuelStations,rain,controls,hud,effects,allRoads=[],allColliders=[];
-let camMode=0,last=performance.now(),started=false,garageOpen=false,escapeAwarded=false,toast='',toastUntil=0,refueling=false,refuelStation=null,lastImpact=0,interactionLock=false;
+let camMode=0,last=performance.now(),started=false,ready=false,startQueued=false,bootFailed=false,garageOpen=false,escapeAwarded=false,toast='',toastUntil=0,refueling=false,refuelStation=null,lastImpact=0,interactionLock=false;
 const parkedCars=[];const audio=new AudioRig();const progress=new Progression();
-const composer=new EffectComposer(renderer);composer.addPass(new RenderPass(scene,camera));const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),QUALITY[quality].bloom,.42,.78);composer.addPass(bloom);composer.addPass(new OutputPass());
+let composer=null,bloom=null;
+
+function setupPost(){composer=null;bloom=null;}
 
 async function init(){
   applyQuality();
-  try{cityData=await loadOSM();if(cityData.roads.length<20||cityData.buildings.length<40)throw new Error('OSM sparse');document.querySelector('#district').textContent='宜蘭車站 / 真實道路骨架';}
-  catch(e){console.warn('OSM unavailable, using offline Yilan fallback',e);cityData=fallbackYilan();document.querySelector('#district').textContent='宜蘭車站 / 離線城市骨架';}
+  document.querySelector('#loadingState').textContent=safeMode?'相容模式：載入精簡宜蘭路網…':'正在讀取宜蘭市道路與建築…';
+  if(safeMode){cityData=fallbackYilan();document.querySelector('#district').textContent='宜蘭車站 / 相容模式路網';}
+  else{
+    try{cityData=await loadOSM();if(cityData.roads.length<30)throw new Error('OSM sparse');document.querySelector('#district').textContent='宜蘭車站 / OSM 真實道路骨架';}
+    catch(e){console.warn('OSM unavailable, using offline Yilan fallback',e);cityData=fallbackYilan();document.querySelector('#district').textContent='宜蘭車站 / 精簡離線路網';}
+  }
 
-  city=new City(scene);city.build(cityData,QUALITY[quality].buildings,QUALITY[quality].lamps);
+  city=new City(scene);city.build(cityData,QUALITY[quality].buildings,QUALITY[quality].lamps,QUALITY[quality].detailBuildings);if(city.asphalt)city.asphalt.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy?.()||1);
   amenities=new Amenities(scene);
   highway=new Highway5(scene);allRoads=[...cityData.roads,...highway.getRoads()];allColliders=[...city.colliders,...highway.getColliders()];
   spawnOwnedCar(progress.selected,[10,.04,-15],0);
@@ -56,17 +60,16 @@ async function init(){
   traffic=new Traffic(scene,allRoads,QUALITY[quality].traffic);
   pedestrians=new Pedestrians(scene,cityData.roads,QUALITY[quality].pedestrians);
   fuelStations=new FuelStations(scene);
-  rain=new Rain(scene,QUALITY[quality].rain);environment=new EnvironmentCycle({scene,renderer,hemi,moon,cityGlow,rain,bloom,baseBloom:QUALITY[quality].bloom});controls=new Controls();hud=new HUD();effects=new VehicleEffects(scene);
+  rain=new Rain(scene,QUALITY[quality].rain);environment=new EnvironmentCycle({scene,renderer,hemi,moon,cityGlow,rain,bloom,baseBloom:0});controls=new Controls();hud=new HUD();effects=new VehicleEffects(scene);
 
   addEventListener('keydown',onKey);
-  document.querySelector('#startGame').addEventListener('click',startGame,{once:true});
   document.querySelector('#closeGarage').addEventListener('click',closeGarage);
   document.querySelector('#garageMobile')?.addEventListener('click',openGarage);
   document.querySelector('#actionMobile')?.addEventListener('click',toggleVehicle);
   document.querySelector('#fuelMobile')?.addEventListener('click',tryRefuel);
-  document.querySelector('#loadingState').textContent=cityData.source==='osm'?'宜蘭城市、國五與雪山隧道已建立':'離線宜蘭城市、國五與雪山隧道已建立';
-  document.querySelector('#startGame').disabled=false;document.querySelector('#startGame').textContent='進入宜蘭市';
-  renderGarage();camera.position.set(8,4,10);requestAnimationFrame(loop);
+  document.querySelector('#loadingState').textContent=cityData.source==='osm'?'宜蘭真實道路骨架、國五與雪山隧道已建立':'精簡宜蘭路網、國五與雪山隧道已建立';
+  ready=true;document.querySelector('#startGame').disabled=false;document.querySelector('#startGame').textContent='進入宜蘭市';
+  renderGarage();camera.position.set(8,4,10);requestAnimationFrame(loop);if(startQueued)startGame();
 }
 
 function currentEntity(){return activeCar||avatar;}
@@ -78,7 +81,7 @@ function streetSpec(data){
   const names={van:'STREET VAN',compact:'CITY COMPACT',scooter:'YILAN SCOOTER',bus:'CITY BUS',pickup:'UTILITY PICKUP',sedan:'STREET SEDAN'};
   return {id:`street-${Date.now()}`,name:names[type]||'STREET VEHICLE',className:'STREET',color:data.color,accent:0xbfd8e6,style:scooter?'scooter':bus?'bus':pickup?'utility':van?'gt':'retro',drive:scooter?'RWD':bus?'RWD':'FWD',power:scooter?18:bus?280:pickup?210:van?185:compact?145:205,topKmh:scooter?108:bus?125:pickup?185:van?178:compact?165:198,handling:scooter?88:bus?44:pickup?64:van?62:compact?76:70,braking:scooter?74:bus?58:68,tankLiters:scooter?6.5:bus?120:pickup?70:van?62:50,initialFuel:data.fuel,consumption:scooter?2.6:bus?24:pickup?12.8:van?11.8:9.4,physics:{maxSpeed:scooter?30:bus?35:pickup?51:van?49:compact?46:55,accel:scooter?16:bus?12:pickup?20:van?18:compact?20:22,brake:scooter?35:bus?30:38,dragGas:.11,dragCoast:scooter?.40:.34,steerRate:scooter?.034:bus?.012:van?.017:.019,grip:scooter?.90:bus?.86:.94}};
 }
-function startGame(){started=true;audio.start();document.querySelector('#loading').classList.add('leave');setTimeout(()=>document.querySelector('#loading')?.remove(),750);document.querySelector('#hud').classList.remove('hidden');}
+function startGame(){if(started||!ready)return;started=true;audio.start();document.querySelector('#loading')?.classList.add('leave');setTimeout(()=>document.querySelector('#loading')?.remove(),750);document.querySelector('#hud').classList.remove('hidden');}
 function say(msg,seconds=2){toast=msg;toastUntil=performance.now()+seconds*1000;}
 
 function onKey(e){
@@ -94,9 +97,9 @@ function onKey(e){
   if(!started&&['KeyW','ArrowUp','Space'].includes(e.code))document.querySelector('#startGame')?.click();
 }
 function applyQuality(){
-  const saved=Number(sessionStorage.getItem('yilanQuality'));if(Number.isInteger(saved)&&saved>=0&&saved<QUALITY.length)quality=saved;
-  const q=QUALITY[quality];let ratio=Math.min(devicePixelRatio*q.pixelRatio,q.ultra?2.0:q.pixelRatio);if(q.ultra&&innerWidth>=3000)ratio=1;
-  renderer.setPixelRatio(ratio);renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=quality>0;moon.shadow.mapSize.set(q.shadow,q.shadow);bloom.strength=q.bloom;document.querySelector('#qualityName').textContent=q.name;
+  const saved=Number(sessionStorage.getItem('yilanQuality'));if(!safeMode&&Number.isInteger(saved)&&saved>=0&&saved<QUALITY.length)quality=saved;if(safeMode)quality=0;
+  const q=QUALITY[quality];const ratio=Math.min(devicePixelRatio||1,q.maxDpr||1.5)*q.pixelRatio;
+  renderer.setPixelRatio(Math.max(.9,ratio));renderer.setSize(innerWidth,innerHeight,false);renderer.shadowMap.enabled=q.shadow>0;moon.shadow.mapSize.set(q.shadow,q.shadow);setupPost(q);document.querySelector('#qualityName').textContent=q.name;
 }
 
 function toggleVehicle(){
@@ -157,6 +160,7 @@ function districtFor(pos){return highway.district(pos)||(Math.hypot(pos.x,pos.z)
 function loop(now){
   const dt=Math.min(.033,(now-last)/1000);last=now;const entity=currentEntity();
   if(entity){
+    sunTarget.position.lerp(entity.group.position,Math.min(1,dt*3));moon.position.set(sunTarget.position.x-160,sunTarget.position.y+240,sunTarget.position.z-90);
     if(started&&!garageOpen){
       if(activeCar){
         const input=(refueling||interactionLock)?{gas:false,brake:true,left:false,right:false,handbrake:false}:controls.state;activeCar.update(dt,input,allColliders);
@@ -166,7 +170,7 @@ function loop(now){
       const target=currentEntity();signals.update(dt);pursuit.update(dt,target);traffic.update(dt,activeCar?activeCar.group.position:avatar.group.position,signals);pedestrians.update(dt,target.group.position);
       if(activeCar){const severity=traffic.resolvePlayerCollision(activeCar);if(severity>0&&now-lastImpact>260){effects.impact(activeCar.group.position,severity);audio.impact?.(severity);lastImpact=now;}}else{const hit=traffic.resolvePedestrianCollision(avatar);if(hit>0&&now-lastImpact>320){effects.impact(avatar.group.position,Math.max(1,hit*.7));audio.impact?.(hit*.6);say('遭車輛擦撞 · 迅速離開車道',1.8);lastImpact=now;}}
       for(const ev of traffic.drainEvents()){pedestrians.reactToCrash?.(ev.position,ev.severity);if(ev.severity>3.2)effects.glassBurst?.(ev.position,ev.severity);}
-      const inTunnel=highway.insideTunnel(target.group.position);if(inTunnel){const laneX=highway.boreX-8.8;for(let i=0;i<pursuit.units.length;i++)pursuit.units[i].group.position.x=THREE.MathUtils.lerp(pursuit.units[i].group.position.x,laneX+(i%2?2.2:-2.2),Math.min(1,dt*2.5));}
+      const inTunnel=highway.insideTunnel(target.group.position);if(inTunnel){for(let i=0;i<pursuit.units.length;i++){const lane=highway.laneTarget(target.group.position,i%2?2.2:-2.2),u=pursuit.units[i].group.position;u.x=THREE.MathUtils.lerp(u.x,lane.x,Math.min(1,dt*2.5));u.z=THREE.MathUtils.lerp(u.z,lane.z,Math.min(1,dt*2.5));}}
       const worldState=environment.update(dt,inTunnel);activeCar?.setWeather?.(worldState.rain,inTunnel);effects.update(dt,activeCar,worldState.rain);if(!inTunnel)rain.update(dt,target.group.position);
       cameraFollow(dt,target,!activeCar);if(activeCar)progress.addDriving(dt,activeCar.speedKmh,pursuit.heat);
       const d=districtFor(target.group.position);hud.update(target,pursuit,allRoads,progress,{onFoot:!activeCar,fuelPct:activeCar?.fuelPct??0,vehicleName:activeCar?.spec?.name||'',prompt:interactionPrompt(),district:d,staminaPct:avatar?.staminaPct??1,time:environment.timeLabel,weather:inTunnel?'隧道':environment.weatherLabel});
@@ -179,12 +183,12 @@ function loop(now){
       else{camera.position.x=entity.group.position.x+Math.sin(now*.00009)*34;camera.position.z=entity.group.position.z+22+Math.cos(now*.00009)*34;camera.position.y=9;camera.lookAt(entity.group.position.x,1.1,entity.group.position.z);}
     }
   }
-  composer.render();requestAnimationFrame(loop);
+  if(composer)composer.render();else renderer.render(scene,camera);requestAnimationFrame(loop);
 }
 function cameraFollow(dt,entity,onFoot=false){
   const h=entity.heading||0,speed=entity.speedKmh||0;camera.fov=THREE.MathUtils.lerp(camera.fov,onFoot?68:62+Math.min(10,speed*.035),dt*2.4);camera.updateProjectionMatrix();let targetPos,look;
   if(onFoot){const back=new THREE.Vector3(Math.sin(h)*5.2,2.8,Math.cos(h)*5.2);targetPos=entity.group.position.clone().add(back);look=entity.group.position.clone().add(new THREE.Vector3(-Math.sin(h)*3,1.2,-Math.cos(h)*3));camera.position.lerp(targetPos,1-Math.pow(.003,dt));camera.lookAt(look);return;}
-  if(camMode===0){const back=new THREE.Vector3(Math.sin(h)*(8.2+speed*.006),3.6+Math.min(1.2,speed*.004),Math.cos(h)*(8.2+speed*.006));targetPos=entity.group.position.clone().add(back);targetPos.y+=1.3;look=entity.group.position.clone().add(new THREE.Vector3(-Math.sin(h)*10,1.0,-Math.cos(h)*10));camera.position.lerp(targetPos,1-Math.pow(.0038,dt));if(speed>145){camera.position.x+=(Math.random()-.5)*.018;camera.position.y+=(Math.random()-.5)*.012;}camera.lookAt(look);
+  if(camMode===0){const back=new THREE.Vector3(Math.sin(h)*(8.2+speed*.006),3.6+Math.min(1.2,speed*.004),Math.cos(h)*(8.2+speed*.006));targetPos=entity.group.position.clone().add(back);targetPos.y+=1.3;look=entity.group.position.clone().add(new THREE.Vector3(-Math.sin(h)*10,1.0,-Math.cos(h)*10));camera.position.lerp(targetPos,1-Math.pow(.0038,dt));camera.lookAt(look);
   }else if(camMode===1){
     const cockpit=entity.cockpitWorld?.(new THREE.Vector3())||entity.group.position.clone().add(new THREE.Vector3(0,1.32,0));
     const cockpitLook=entity.cockpitLookWorld?.(new THREE.Vector3())||entity.group.position.clone().add(new THREE.Vector3(-Math.sin(h)*18,1.28,-Math.cos(h)*18));
@@ -192,5 +196,34 @@ function cameraFollow(dt,entity,onFoot=false){
   }else{targetPos=entity.group.position.clone().add(new THREE.Vector3(Math.sin(h)*15,7.8,Math.cos(h)*15));camera.position.lerp(targetPos,1-Math.pow(.006,dt));camera.lookAt(entity.group.position.clone().add(new THREE.Vector3(0,1,0)));}
 }
 
-addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight)});
-init();
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);composer?.setSize?.(innerWidth,innerHeight);});
+
+async function requestLandscape(){
+  if(!coarsePointer)return;
+  try{if(!document.fullscreenElement&&document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen({navigationUI:'hide'});}catch{try{if(!document.fullscreenElement&&document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();}catch{}}
+  try{await screen.orientation?.lock?.('landscape');}catch{}
+}
+const startButton=document.querySelector('#startGame');
+startButton.disabled=false;startButton.textContent='進入宜蘭市';
+startButton.addEventListener('click',()=>{
+  requestLandscape();startQueued=true;
+  if(bootFailed){const u=new URL(location.href);u.searchParams.set('safe','1');location.href=u.toString();return;}
+  if(ready)startGame();else{startButton.textContent='完成後自動進入';document.querySelector('#loadingState').textContent='場景載入中，完成後會自動進入…';}
+});
+document.querySelector('#landscapeMode')?.addEventListener('click',requestLandscape);
+document.querySelector('#rotateLandscape')?.addEventListener('click',requestLandscape);
+
+let deferredInstall=null;const installButton=document.querySelector('#installApp'),installHint=document.querySelector('#installHint');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;if(installButton){installButton.hidden=false;installButton.textContent='加入主畫面';}});
+installButton?.addEventListener('click',async()=>{
+  if(deferredInstall){deferredInstall.prompt();await deferredInstall.userChoice.catch(()=>{});deferredInstall=null;installButton.hidden=true;return;}
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);if(installHint){installHint.textContent=ios?'iPhone / iPad：Safari 分享按鈕 →「加入主畫面」':'瀏覽器選單 →「安裝應用程式／加入主畫面」';installHint.hidden=false;}
+});
+window.addEventListener('appinstalled',()=>{if(installButton)installButton.hidden=true;if(installHint){installHint.textContent='已安裝到主畫面';installHint.hidden=false;}});
+if(import.meta.env.PROD&&'serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(e=>console.warn('SW registration failed',e)));
+
+init().catch(e=>{
+  console.error('YILAN REDLINE boot failed',e);bootFailed=true;ready=false;
+  const state=document.querySelector('#loadingState');if(state)state.textContent=`啟動失敗：${e?.message||'未知錯誤'}。可用相容模式重試。`;
+  startButton.disabled=false;startButton.textContent='相容模式重試';
+});
