@@ -1,73 +1,33 @@
-# YILAN // REDLINE v1.0 — Realism City
+# YILAN // REDLINE v2.3 — High-Poly Station District Build
 
-宜蘭市高擬真瀏覽器開放世界駕駛版本。這一版的核心原則是「清楚、擬真、正確街廓」，不再用顆粒、重霧或 Bloom 掩蓋模型細節。
+This UE5 production package continues the formal high-fidelity line. v2.3 adds a station-district asset layer instead of another visual-effects pass.
 
-## v1.0 主要改進
+## Physically included
+- **36 importable GLB source assets** in `Content/SourceAssets/HighPoly/`.
+- **436,178 source triangles** across the catalog.
+- **9 local PBR material sets**: 6×2K support materials plus 3×4K hero materials.
+- A new high-detail Yilan Station facade reference mesh, station-front arcade/shop modules, parked scooter cluster, pedestrian signal, bus-stop pole, street tree/planter and clean crosswalk/stop-line kit.
+- A new Diudiudang suspended-train landmark proxy plus the existing nine-instance 14 m steel-tree module.
+- Xueshan/freeway additions: visible south-portal visual module, tunnel light rail and double barrier.
+- UE5 Python importer updated for 2K/4K textures, Nanite and first-pass `material_hint` assignment.
+- `StationFrontHeroKit.json` defines the asset set and a no-grain/photo-match quality gate for the station vertical slice.
 
-- 預設使用清晰白天／傍晚光線，動態天氣仍保留，但霧量大幅降低。
-- 完全取消強制 Bloom 與底層霧粒子；4K 模式以原生幾何、PBR、陰影與高 DPR 呈現。
-- 道路改成連續曲線 ribbon geometry，不再以一節一節的方盒拼路。
-- OSM 查詢擴充：道路、建築、鐵路、水道、商店／設施 POI。
-- 宜蘭離線備援地圖重畫，加入中山路、宜興路、光復路、神農路、民權路、復興路、泰山路、女中路、東港路、健康路、縣民大道與舊城區道路。
-- 建築物使用 OSM footprint，近距離建築增加：窗框、玻璃、店面、招牌、遮雨棚、陽台、冷氣、屋頂水塔、天線與不同台灣常見外牆材質。
-- 道路材質重做為低噪點 PBR：細節來自正常貼圖／粗糙度／裂縫與修補紋理，不再使用全畫面隨機像素顆粒。
-- 人物改為完整比例肢體：頭、頸、軀幹、骨盆、上／下肢、手腳、頭髮、衣物、背包、雨傘，並改善走路／跑步關節動畫。
-- 玩家角色同步升級，徒步時不再是簡單 Capsule 人形。
-- 路上車輛重做：圓角車身、車窗、後視鏡、門把、車牌、燈具、輪框、輪胎、機車騎士、公車／廂型車／皮卡差異。
-- 玩家車輛增加：圓角車身、側窗、後視鏡、門把、前進氣口、鈑件縫、車牌與更多近距離細節。
-- 太陽陰影會跟隨玩家移動，避免離開出生點後失去高品質動態陰影。
-- 國道 5 號、頭城方向與雪山隧道系統完整保留。
-- 手機橫向操作、PWA 加入主畫面、Cloudflare Workers/Static Assets 部署流程完整保留。
+## New v2.3 hero-quality materials
+- `M_Asphalt_Pro_4K`
+- `M_Yilan_StationPaint_4K`
+- `M_Yilan_AgedBrick_4K`
 
-## 地圖與 Google 參考方式
+All three are **4096×4096 BaseColor / Normal / Roughness / Metallic** asset textures. They do not add screen-space film grain.
 
-Google Maps / 街景僅用於人工核對「道路方向、城市密度、建築尺度、路口與台灣街景視覺」；遊戲不抓取、不封裝、不重新散布 Google 地圖、衛星圖或街景影像。
+## Reality rule
+High polygon count alone does not make a real landmark accurate. The Yilan Station and Diudiudang meshes are reference-locked production meshes, **not photogrammetry**. Final shipping placement/proportions still require current-site photo matching and authoritative map alignment. Generic arcade/store modules must never replace a named hero building.
 
-可部署的道路／建築幾何主要來自 OpenStreetMap / Overpass；離線備援則以宜蘭真實主要道路方向重新整理，不使用舊版棋盤式假城市。
-
-## 畫質模式
-
-- `MOBILE REAL`：手機橫向，降低物件密度但保持清楚。
-- `REALISM`：桌機預設，無 Bloom、無顆粒，2K 級清晰感。
-- `PHOTO`：提高 DPR、陰影與建築細節。
-- `4K CLEAN`：4096 shadow map、最高街景／交通／人物密度，仍不使用強制模糊後製。
-
-切換畫質：`Q`
-
-## 操作
-
-- `W / S`：加速 / 煞車，徒步時前後移動
-- `A / D`：轉向
-- `SPACE`：手煞車 / 徒步衝刺
-- `E`：上下車 / 換乘
-- `F`：加油
-- `C`：第三人稱 / 座艙 / 電影視角
-- `G`：車庫
-- `Q`：畫質
-- `T`：測試下一種天氣
-- `R`：重置
-
-## Cloudflare 部署
-
-Cloudflare Build / Deploy 可維持：
-
-```text
-Build command: 留空
-Deploy command: npx wrangler deploy
-```
-
-`wrangler.toml` 的 `[build] command = "npm run build"` 會先產生 `dist/` 再上傳。
-
-本機：
-
+## Validation
 ```bash
-npm install
-npm run dev
+python Scripts/validate_world_reference.py
+python Scripts/validate_highpoly_assets.py
 ```
 
-正式建置：
+Then inside UE5 run `Scripts/UE5/import_highpoly_assets.py`.
 
-```bash
-npm run build
-npx wrangler deploy
-```
+See `Docs/HIGH_POLY_ASSET_CATALOG.md`, `Docs/V23_REFERENCE_NOTES.md`, `Docs/REALISM_GATE.md` and `Content/Data/HighPoly/StationFrontHeroKit.json`.

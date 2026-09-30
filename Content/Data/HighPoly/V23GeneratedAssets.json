@@ -1,0 +1,169 @@
+{
+  "version": "2.3",
+  "assets": [
+    {
+      "file": "SM_Yilan_Station_Facade_Hero_HQ.glb",
+      "triangles": 15730,
+      "vertices": 9465,
+      "real_scale_m": [
+        31.0,
+        6.25,
+        12.22
+      ]
+    },
+    {
+      "file": "SM_Yilan_Arcade_3Storey_8m_HQ.glb",
+      "triangles": 8728,
+      "vertices": 4506,
+      "real_scale_m": [
+        8.82,
+        11.6,
+        12.61
+      ]
+    },
+    {
+      "file": "SM_Yilan_CornerStore_Glass_HQ.glb",
+      "triangles": 2168,
+      "vertices": 1154,
+      "real_scale_m": [
+        8.32,
+        7.28,
+        4.93
+      ]
+    },
+    {
+      "file": "SM_Taiwan_Scooter_Parked_Triple_HQ.glb",
+      "triangles": 25020,
+      "vertices": 12576,
+      "real_scale_m": [
+        2.5,
+        1.53,
+        1.48
+      ]
+    },
+    {
+      "file": "SM_Taiwan_PedestrianSignal_HQ.glb",
+      "triangles": 560,
+      "vertices": 296,
+      "real_scale_m": [
+        0.48,
+        0.52,
+        3.4
+      ]
+    },
+    {
+      "file": "SM_Taiwan_BusStopPole_HQ.glb",
+      "triangles": 388,
+      "vertices": 204,
+      "real_scale_m": [
+        0.55,
+        0.38,
+        3.42
+      ]
+    },
+    {
+      "file": "SM_Yilan_StreetTree_Planter_HQ.glb",
+      "triangles": 8376,
+      "vertices": 4214,
+      "real_scale_m": [
+        3.6,
+        2.65,
+        5.9
+      ]
+    },
+    {
+      "file": "SM_Taiwan_Crosswalk_StopLine_5m_HQ.glb",
+      "triangles": 132,
+      "vertices": 88,
+      "real_scale_m": [
+        5.5,
+        5.4,
+        0.02
+      ]
+    },
+    {
+      "file": "SM_Xueshan_SouthPortal_Visual_HQ.glb",
+      "triangles": 1252,
+      "vertices": 708,
+      "real_scale_m": [
+        26.9,
+        14.0,
+        8.42
+      ]
+    },
+    {
+      "file": "SM_Xueshan_Tunnel_LightRail_9m_HQ.glb",
+      "triangles": 356,
+      "vertices": 220,
+      "real_scale_m": [
+        9.2,
+        0.44,
+        1.0
+      ]
+    },
+    {
+      "file": "SM_Taiwan_Freeway_DoubleBarrier_8m_HQ.glb",
+      "triangles": 1092,
+      "vertices": 588,
+      "real_scale_m": [
+        8.0,
+        0.87,
+        1.1
+      ]
+    },
+    {
+      "file": "SM_Yilan_Diudiudang_SuspendedTrain_HQ.glb",
+      "triangles": 13352,
+      "vertices": 6762,
+      "real_scale_m": [
+        9.02,
+        2.65,
+        5.36
+      ]
+    }
+  ],
+  "pbr": [
+    {
+      "name": "M_Asphalt_Pro_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "BaseColor": "M_Asphalt_Pro_4K/M_Asphalt_Pro_4K_BaseColor.png",
+        "Normal": "M_Asphalt_Pro_4K/M_Asphalt_Pro_4K_Normal.png",
+        "Roughness": "M_Asphalt_Pro_4K/M_Asphalt_Pro_4K_Roughness.png",
+        "Metallic": "M_Asphalt_Pro_4K/M_Asphalt_Pro_4K_Metallic.png"
+      },
+      "notes": "local procedural PBR source; material texture only, no screen-space grain"
+    },
+    {
+      "name": "M_Yilan_StationPaint_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "BaseColor": "M_Yilan_StationPaint_4K/M_Yilan_StationPaint_4K_BaseColor.png",
+        "Normal": "M_Yilan_StationPaint_4K/M_Yilan_StationPaint_4K_Normal.png",
+        "Roughness": "M_Yilan_StationPaint_4K/M_Yilan_StationPaint_4K_Roughness.png",
+        "Metallic": "M_Yilan_StationPaint_4K/M_Yilan_StationPaint_4K_Metallic.png"
+      },
+      "notes": "local procedural PBR source; material texture only, no screen-space grain"
+    },
+    {
+      "name": "M_Yilan_AgedBrick_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "BaseColor": "M_Yilan_AgedBrick_4K/M_Yilan_AgedBrick_4K_BaseColor.png",
+        "Normal": "M_Yilan_AgedBrick_4K/M_Yilan_AgedBrick_4K_Normal.png",
+        "Roughness": "M_Yilan_AgedBrick_4K/M_Yilan_AgedBrick_4K_Roughness.png",
+        "Metallic": "M_Yilan_AgedBrick_4K/M_Yilan_AgedBrick_4K_Metallic.png"
+      },
+      "notes": "local procedural PBR source; material texture only, no screen-space grain"
+    }
+  ]
+}

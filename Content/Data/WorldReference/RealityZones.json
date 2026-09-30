@@ -1,0 +1,13 @@
+{
+  "zones": [
+    {"id":"Station","name":"宜蘭車站／幾米廣場","tier":"A","rule":"1:1 hero reconstruction; no procedural facade on landmark frontage"},
+    {"id":"OldTownEast","name":"舊城東路／光復路","tier":"A","rule":"current road geometry + storefront frontage library matched to reference"},
+    {"id":"OldTownWest","name":"舊城西路／宜蘭酒廠","tier":"A","rule":"hero historic assets + accurate road edge and sidewalks"},
+    {"id":"OldTownSouth","name":"舊城南路／設治紀念館","tier":"A","rule":"historic architecture and vegetation silhouette fidelity"},
+    {"id":"Shennong","name":"神農商圈","tier":"A","rule":"dense storefront signs, arcades, scooters, curb parking, current lane geometry"},
+    {"id":"CivicCommercial","name":"新月／市中心商業區","tier":"B","rule":"accurate footprints and road geometry; bespoke facades for major buildings"},
+    {"id":"Residential","name":"宜蘭市住宅區","tier":"B","rule":"accurate footprints; style-matched procedural facades allowed after reference sampling"},
+    {"id":"G5","name":"國道5號宜蘭至頭城","tier":"A","rule":"accurate alignment/grade impression, bridges, barriers, signs, lighting; no fictional shortcuts"},
+    {"id":"Xueshan","name":"雪山隧道","tier":"A","rule":"public road geometry/visual appearance, 12.9km scale; operational/security internals abstracted"}
+  ]
+}

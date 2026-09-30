@@ -1,0 +1,67 @@
+{
+  "project": "YILAN // REDLINE",
+  "world_policy": "Real-world geometry first. No fictional grid fallback in shipping builds.",
+  "reference_date": "2026-09-30",
+  "coordinate_system": "WGS84 source -> UE local world partition coordinates",
+  "core_landmarks": [
+    {
+      "name": "宜蘭車站",
+      "zone": "Station",
+      "fidelity": "hero_1to1",
+      "requirements": ["station massing", "platform/rail context", "front plaza relationship", "current facade colors/details"],
+      "reference": "official tourism + current map/street-view visual checks"
+    },
+    {
+      "name": "幾米廣場／丟丟噹森林",
+      "zone": "Station",
+      "fidelity": "hero_1to1",
+      "requirements": ["station-front placement", "steel tree canopy", "suspended train artwork", "pedestrian paving and street furniture"]
+    },
+    {
+      "name": "宜蘭酒廠",
+      "zone": "OldTownWest",
+      "fidelity": "hero_1to1",
+      "requirements": ["entry canopy", "historic brick/warehouse character", "large distillery massing", "courtyard edge"]
+    },
+    {
+      "name": "宜蘭設治紀念館",
+      "zone": "OldTownSouth",
+      "fidelity": "hero_1to1",
+      "requirements": ["Japanese-Western hybrid timber form", "garden massing", "historic wall/roof proportions"]
+    },
+    {
+      "name": "新月廣場周邊",
+      "zone": "CivicCommercial",
+      "fidelity": "hero_context",
+      "requirements": ["large commercial block massing", "adjacent roads", "urban lighting and signage"]
+    }
+  ],
+  "priority_corridors": [
+    "宜興路一段",
+    "光復路",
+    "舊城東路",
+    "舊城南路",
+    "舊城西路",
+    "中山路二段",
+    "中山路三段",
+    "神農路一段",
+    "神農路二段",
+    "農權路",
+    "復興路",
+    "民權路",
+    "泰山路",
+    "東港路",
+    "縣民大道",
+    "宜蘭交流道銜接道路",
+    "國道5號北上至頭城／雪山隧道南口"
+  ],
+  "highway_reference": {
+    "name": "國道5號／雪山隧道",
+    "tunnel_length_m": 12900,
+    "bores": 2,
+    "lanes_per_direction": 2,
+    "lane_width_m": 3.5,
+    "clear_height_m": 4.6,
+    "notes": "Publicly visible road geometry and appearance only. Do not recreate restricted operational/security details."
+  }
+}

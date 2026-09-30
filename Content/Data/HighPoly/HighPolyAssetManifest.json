@@ -1,0 +1,506 @@
+{
+  "version": "2.3",
+  "units": "meters",
+  "coordinate_system": "source assets use Z-up; verify Interchange conversion on import",
+  "assets": [
+    {
+      "category": "street_furniture",
+      "nanite": true,
+      "real_scale_m": [
+        2.7,
+        0.5,
+        8.1
+      ],
+      "asset": "SM_Yilan_StreetLight_8m_HQ",
+      "triangles": 6376,
+      "vertices": 3236,
+      "file": "SM_Yilan_StreetLight_8m_HQ.glb"
+    },
+    {
+      "category": "traffic",
+      "nanite": true,
+      "real_scale_m": [
+        6.9,
+        0.6,
+        5.9
+      ],
+      "asset": "SM_Yilan_TrafficSignal_Mast_HQ",
+      "triangles": 11556,
+      "vertices": 5800,
+      "file": "SM_Yilan_TrafficSignal_Mast_HQ.glb"
+    },
+    {
+      "category": "utility",
+      "nanite": true,
+      "real_scale_m": [
+        2.7,
+        0.8,
+        9.6
+      ],
+      "asset": "SM_Yilan_UtilityPole_HQ",
+      "triangles": 3248,
+      "vertices": 1662,
+      "file": "SM_Yilan_UtilityPole_HQ.glb"
+    },
+    {
+      "category": "building_detail",
+      "nanite": true,
+      "real_scale_m": [
+        1.1,
+        0.5,
+        0.8
+      ],
+      "asset": "SM_Yilan_AC_OutdoorUnit_HQ",
+      "triangles": 804,
+      "vertices": 474,
+      "file": "SM_Yilan_AC_OutdoorUnit_HQ.glb"
+    },
+    {
+      "category": "street_furniture",
+      "nanite": true,
+      "real_scale_m": [
+        5.6,
+        1.5,
+        2.9
+      ],
+      "asset": "SM_Yilan_BusShelter_HQ",
+      "triangles": 660,
+      "vertices": 350,
+      "file": "SM_Yilan_BusShelter_HQ.glb"
+    },
+    {
+      "category": "road",
+      "nanite": true,
+      "real_scale_m": [
+        4,
+        1.8,
+        0.2
+      ],
+      "asset": "SM_Yilan_CurbDrain_4m_HQ",
+      "triangles": 516,
+      "vertices": 282,
+      "file": "SM_Yilan_CurbDrain_4m_HQ.glb"
+    },
+    {
+      "category": "road",
+      "nanite": true,
+      "real_scale_m": [
+        8,
+        0.3,
+        1.2
+      ],
+      "asset": "SM_Yilan_Guardrail_8m_HQ",
+      "triangles": 96,
+      "vertices": 64,
+      "file": "SM_Yilan_Guardrail_8m_HQ.glb"
+    },
+    {
+      "category": "architecture",
+      "nanite": true,
+      "real_scale_m": [
+        6,
+        1.3,
+        4.4
+      ],
+      "asset": "SM_Yilan_Storefront_6m_HQ",
+      "triangles": 728,
+      "vertices": 404,
+      "file": "SM_Yilan_Storefront_6m_HQ.glb"
+    },
+    {
+      "category": "vehicle",
+      "nanite": false,
+      "real_scale_m": [
+        1.8,
+        0.75,
+        1.45
+      ],
+      "notes": "traffic/static display; use skeletal/Chaos rig variant for drivable scooter",
+      "asset": "SM_Yilan_Scooter_HQ",
+      "triangles": 16292,
+      "vertices": 8180,
+      "file": "SM_Yilan_Scooter_HQ.glb"
+    },
+    {
+      "category": "vehicle_hero",
+      "nanite": true,
+      "real_scale_m": [
+        4.6,
+        2.0,
+        1.4
+      ],
+      "notes": "original unbranded visual mesh; drivable Chaos setup requires wheel/suspension skeletal rig or vehicle blueprint",
+      "asset": "SM_Redline_HeroSupercar_HQ",
+      "triangles": 176724,
+      "vertices": 88434,
+      "file": "SM_Redline_HeroSupercar_HQ.glb"
+    },
+    {
+      "category": "pedestrian_proxy",
+      "nanite": true,
+      "real_scale_m": [
+        0.7,
+        0.45,
+        1.85
+      ],
+      "notes": "medium-distance static/crowd proxy only; hero pedestrians must use MetaHuman/equivalent skeletal characters",
+      "asset": "SM_Pedestrian_CrowdProxy_HQ",
+      "triangles": 16728,
+      "vertices": 8388,
+      "file": "SM_Pedestrian_CrowdProxy_HQ.glb"
+    },
+    {
+      "category": "landmark_structure",
+      "nanite": true,
+      "real_scale_m": [
+        8.5,
+        8.5,
+        14.2
+      ],
+      "source_basis": "Yilan official tourism: 14m steel tree; use 9 instances for the plaza canopy",
+      "asset": "SM_Yilan_Diudiudang_SteelTree_14m_HQ",
+      "file": "SM_Yilan_Diudiudang_SteelTree_14m_HQ.glb",
+      "triangles": 8448,
+      "vertices": 4402
+    },
+    {
+      "category": "landmark_architecture",
+      "nanite": true,
+      "real_scale_m": [
+        10.2,
+        1.1,
+        7.4
+      ],
+      "source_basis": "Yilan Distillery historic red-brick warehouse visual reference",
+      "asset": "SM_Yilan_Distillery_RedBrickWarehouseFacade_HQ",
+      "file": "SM_Yilan_Distillery_RedBrickWarehouseFacade_HQ.glb",
+      "triangles": 656,
+      "vertices": 408
+    },
+    {
+      "category": "historic_architecture",
+      "nanite": true,
+      "real_scale_m": [
+        7.9,
+        1.8,
+        3.8
+      ],
+      "source_basis": "Wayo historic architecture module inspired by Yilan Administration Memorial district; not a full 1:1 building",
+      "asset": "SM_Yilan_Historic_Wayo_Facade_HQ",
+      "file": "SM_Yilan_Historic_Wayo_Facade_HQ.glb",
+      "triangles": 704,
+      "vertices": 450
+    },
+    {
+      "category": "roof_detail",
+      "nanite": true,
+      "real_scale_m": [
+        1.6,
+        1.6,
+        1.75
+      ],
+      "asset": "SM_Taiwan_RooftopWaterTank_HQ",
+      "file": "SM_Taiwan_RooftopWaterTank_HQ.glb",
+      "triangles": 15088,
+      "vertices": 7558
+    },
+    {
+      "category": "architecture_module",
+      "nanite": true,
+      "real_scale_m": [
+        0.7,
+        0.7,
+        3.7
+      ],
+      "asset": "SM_Yilan_ArcadeColumn_Tile_HQ",
+      "file": "SM_Yilan_ArcadeColumn_Tile_HQ.glb",
+      "triangles": 444,
+      "vertices": 296
+    },
+    {
+      "category": "traffic",
+      "nanite": true,
+      "real_scale_m": [
+        0.8,
+        0.5,
+        3.7
+      ],
+      "asset": "SM_Taiwan_ConvexMirror_HQ",
+      "file": "SM_Taiwan_ConvexMirror_HQ.glb",
+      "triangles": 21184,
+      "vertices": 10598
+    },
+    {
+      "category": "traffic",
+      "nanite": true,
+      "real_scale_m": [
+        1.2,
+        0.25,
+        0.8
+      ],
+      "asset": "SM_Taiwan_FlexibleBollard_3x_HQ",
+      "file": "SM_Taiwan_FlexibleBollard_3x_HQ.glb",
+      "triangles": 3072,
+      "vertices": 1566
+    },
+    {
+      "category": "highway",
+      "nanite": true,
+      "real_scale_m": [
+        12,
+        1.2,
+        6.8
+      ],
+      "asset": "SM_Taiwan_FreewaySignGantry_HQ",
+      "file": "SM_Taiwan_FreewaySignGantry_HQ.glb",
+      "triangles": 168,
+      "vertices": 112
+    },
+    {
+      "category": "tunnel",
+      "nanite": true,
+      "real_scale_m": [
+        8,
+        10.5,
+        5.5
+      ],
+      "notes": "visual modular lining only; not a replica of restricted rescue/operations layout",
+      "asset": "SM_Xueshan_Tunnel_Lining_8m_HQ",
+      "file": "SM_Xueshan_Tunnel_Lining_8m_HQ.glb",
+      "triangles": 900,
+      "vertices": 600
+    },
+    {
+      "category": "tunnel_prop",
+      "nanite": true,
+      "real_scale_m": [
+        2.8,
+        1.5,
+        1.6
+      ],
+      "notes": "generic visual prop, not a placement guide",
+      "asset": "SM_Tunnel_JetFan_Visual_HQ",
+      "file": "SM_Tunnel_JetFan_Visual_HQ.glb",
+      "triangles": 912,
+      "vertices": 484
+    },
+    {
+      "category": "road_detail",
+      "nanite": true,
+      "real_scale_m": [
+        0.8,
+        0.8,
+        0.08
+      ],
+      "asset": "SM_Taiwan_ManholeCover_HQ",
+      "file": "SM_Taiwan_ManholeCover_HQ.glb",
+      "triangles": 5776,
+      "vertices": 2914
+    },
+    {
+      "category": "architecture",
+      "nanite": true,
+      "real_scale_m": [
+        5.6,
+        1.0,
+        4.2
+      ],
+      "asset": "SM_Yilan_Storefront_Shutter_5p5m_HQ",
+      "file": "SM_Yilan_Storefront_Shutter_5p5m_HQ.glb",
+      "triangles": 616,
+      "vertices": 370
+    },
+    {
+      "category": "vehicle_hero",
+      "nanite": true,
+      "real_scale_m": [
+        4.6,
+        2.05,
+        1.35
+      ],
+      "notes": "original unbranded high-detail visual body; create skeletal wheel/suspension rig for Chaos driveability",
+      "asset": "SM_Redline_ApexGT_Hero_HQ",
+      "file": "SM_Redline_ApexGT_Hero_HQ.glb",
+      "triangles": 67328,
+      "vertices": 33842
+    },
+    {
+      "asset": "SM_Yilan_Station_Facade_Hero_HQ",
+      "file": "SM_Yilan_Station_Facade_Hero_HQ.glb",
+      "triangles": 15730,
+      "vertices": 9465,
+      "real_scale_m": [
+        31.0,
+        6.25,
+        12.22
+      ],
+      "category": "landmark_architecture",
+      "nanite": true,
+      "material_hint": "M_Yilan_StationPaint_4K",
+      "source_basis": "Official Yilan tourism station imagery/description: Jimmy-themed painted station facade with smiling giraffe; geometry is a high-detail reference model, not photogrammetry.",
+      "qa_tier": "hero_manual_qa"
+    },
+    {
+      "asset": "SM_Yilan_Arcade_3Storey_8m_HQ",
+      "file": "SM_Yilan_Arcade_3Storey_8m_HQ.glb",
+      "triangles": 8728,
+      "vertices": 4506,
+      "real_scale_m": [
+        8.82,
+        11.6,
+        12.61
+      ],
+      "category": "architecture_module",
+      "nanite": true,
+      "material_hint": "M_Taiwan_CreamTile_2K",
+      "notes": "Taiwan/Yilan arcade mid-rise kit; style module only, not a substitute for a named hero building."
+    },
+    {
+      "asset": "SM_Yilan_CornerStore_Glass_HQ",
+      "file": "SM_Yilan_CornerStore_Glass_HQ.glb",
+      "triangles": 2168,
+      "vertices": 1154,
+      "real_scale_m": [
+        8.32,
+        7.28,
+        4.93
+      ],
+      "category": "architecture_module",
+      "nanite": true,
+      "material_hint": "M_Concrete_Clean_2K",
+      "notes": "Corner storefront module with wrapped glazing, shutter, awning and rooftop service detail."
+    },
+    {
+      "asset": "SM_Taiwan_Scooter_Parked_Triple_HQ",
+      "file": "SM_Taiwan_Scooter_Parked_Triple_HQ.glb",
+      "triangles": 25020,
+      "vertices": 12576,
+      "real_scale_m": [
+        2.5,
+        1.53,
+        1.48
+      ],
+      "category": "vehicle_prop",
+      "nanite": true,
+      "notes": "Parked scooter cluster for streetscape density; drivable scooters require skeletal/Chaos rig."
+    },
+    {
+      "asset": "SM_Taiwan_PedestrianSignal_HQ",
+      "file": "SM_Taiwan_PedestrianSignal_HQ.glb",
+      "triangles": 560,
+      "vertices": 296,
+      "real_scale_m": [
+        0.48,
+        0.52,
+        3.4
+      ],
+      "category": "traffic",
+      "nanite": true,
+      "notes": "Pedestrian signal/push-button visual prop; signal behavior supplied by gameplay logic."
+    },
+    {
+      "asset": "SM_Taiwan_BusStopPole_HQ",
+      "file": "SM_Taiwan_BusStopPole_HQ.glb",
+      "triangles": 388,
+      "vertices": 204,
+      "real_scale_m": [
+        0.55,
+        0.38,
+        3.42
+      ],
+      "category": "street_furniture",
+      "nanite": true,
+      "notes": "Taiwan-style bus stop pole visual kit."
+    },
+    {
+      "asset": "SM_Yilan_StreetTree_Planter_HQ",
+      "file": "SM_Yilan_StreetTree_Planter_HQ.glb",
+      "triangles": 8376,
+      "vertices": 4214,
+      "real_scale_m": [
+        3.6,
+        2.65,
+        5.9
+      ],
+      "category": "vegetation_prop",
+      "nanite": true,
+      "notes": "Street tree/planter hero prop; replace foliage clusters with SpeedTree/foliage cards for final runtime optimization."
+    },
+    {
+      "asset": "SM_Taiwan_Crosswalk_StopLine_5m_HQ",
+      "file": "SM_Taiwan_Crosswalk_StopLine_5m_HQ.glb",
+      "triangles": 132,
+      "vertices": 88,
+      "real_scale_m": [
+        5.5,
+        5.4,
+        0.02
+      ],
+      "category": "road_marking",
+      "nanite": false,
+      "notes": "Geometry marking kit; use decal/material variant in production where appropriate."
+    },
+    {
+      "asset": "SM_Xueshan_SouthPortal_Visual_HQ",
+      "file": "SM_Xueshan_SouthPortal_Visual_HQ.glb",
+      "triangles": 1252,
+      "vertices": 708,
+      "real_scale_m": [
+        26.9,
+        14.0,
+        8.42
+      ],
+      "category": "tunnel",
+      "nanite": true,
+      "material_hint": "M_Concrete_Clean_2K",
+      "notes": "Publicly visible tunnel-portal visual module only; does not encode restricted operational/rescue infrastructure."
+    },
+    {
+      "asset": "SM_Xueshan_Tunnel_LightRail_9m_HQ",
+      "file": "SM_Xueshan_Tunnel_LightRail_9m_HQ.glb",
+      "triangles": 356,
+      "vertices": 220,
+      "real_scale_m": [
+        9.2,
+        0.44,
+        1.0
+      ],
+      "category": "tunnel",
+      "nanite": true,
+      "notes": "Generic visible tunnel-light rail module."
+    },
+    {
+      "asset": "SM_Taiwan_Freeway_DoubleBarrier_8m_HQ",
+      "file": "SM_Taiwan_Freeway_DoubleBarrier_8m_HQ.glb",
+      "triangles": 1092,
+      "vertices": 588,
+      "real_scale_m": [
+        8.0,
+        0.87,
+        1.1
+      ],
+      "category": "highway",
+      "nanite": true,
+      "notes": "Double-side freeway barrier module."
+    },
+    {
+      "asset": "SM_Yilan_Diudiudang_SuspendedTrain_HQ",
+      "file": "SM_Yilan_Diudiudang_SuspendedTrain_HQ.glb",
+      "triangles": 13352,
+      "vertices": 6762,
+      "real_scale_m": [
+        9.02,
+        2.65,
+        5.36
+      ],
+      "category": "landmark_structure",
+      "nanite": true,
+      "source_basis": "Official Yilan tourism: suspended green flying-train artwork at Diudiudang Forest/Jimmy Square.",
+      "qa_tier": "hero_manual_qa",
+      "notes": "High-detail artwork proxy; final placement/proportions require photo-matched art QA."
+    }
+  ],
+  "asset_count": 36,
+  "total_triangles": 436178,
+  "total_vertices": 221655
+}

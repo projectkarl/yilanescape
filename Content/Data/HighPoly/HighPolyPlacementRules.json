@@ -1,0 +1,11 @@
+{
+  "version": "2.1",
+  "rules": [
+    {"asset": "SM_Yilan_StreetLight_8m_HQ", "placement": "verified street_lamp point or manually QA-approved corridor spacing", "tierA_guessing": false},
+    {"asset": "SM_Yilan_TrafficSignal_Mast_HQ", "placement": "verified signalized intersection; orientation follows lane approach", "tierA_guessing": false},
+    {"asset": "SM_Yilan_UtilityPole_HQ", "placement": "visual-reference-confirmed roadside utility corridor", "tierA_guessing": false},
+    {"asset": "SM_Yilan_Storefront_6m_HQ", "placement": "style module only; never substitutes a hero facade", "tierA_guessing": true},
+    {"asset": "SM_Yilan_Scooter_HQ", "placement": "traffic/parked scooter pool; density calibrated from reference captures", "tierA_guessing": true},
+    {"asset": "SM_Redline_HeroSupercar_HQ", "placement": "player/garage prototype visual; must be Chaos-rigged before gameplay sign-off", "tierA_guessing": true}
+  ]
+}

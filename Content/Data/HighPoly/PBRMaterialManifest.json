@@ -1,0 +1,125 @@
+{
+  "version": "2.3",
+  "materials": [
+    {
+      "name": "M_Yilan_RedBrick_2K",
+      "resolution": [
+        2048,
+        2048
+      ],
+      "maps": {
+        "basecolor": "M_Yilan_RedBrick_2K/M_Yilan_RedBrick_2K_BaseColor.png",
+        "normal": "M_Yilan_RedBrick_2K/M_Yilan_RedBrick_2K_Normal.png",
+        "roughness": "M_Yilan_RedBrick_2K/M_Yilan_RedBrick_2K_Roughness.png",
+        "metallic": "M_Yilan_RedBrick_2K/M_Yilan_RedBrick_2K_Metallic.png"
+      }
+    },
+    {
+      "name": "M_Taiwan_CreamTile_2K",
+      "resolution": [
+        2048,
+        2048
+      ],
+      "maps": {
+        "basecolor": "M_Taiwan_CreamTile_2K/M_Taiwan_CreamTile_2K_BaseColor.png",
+        "normal": "M_Taiwan_CreamTile_2K/M_Taiwan_CreamTile_2K_Normal.png",
+        "roughness": "M_Taiwan_CreamTile_2K/M_Taiwan_CreamTile_2K_Roughness.png",
+        "metallic": "M_Taiwan_CreamTile_2K/M_Taiwan_CreamTile_2K_Metallic.png"
+      }
+    },
+    {
+      "name": "M_Concrete_Clean_2K",
+      "resolution": [
+        2048,
+        2048
+      ],
+      "maps": {
+        "basecolor": "M_Concrete_Clean_2K/M_Concrete_Clean_2K_BaseColor.png",
+        "normal": "M_Concrete_Clean_2K/M_Concrete_Clean_2K_Normal.png",
+        "roughness": "M_Concrete_Clean_2K/M_Concrete_Clean_2K_Roughness.png",
+        "metallic": "M_Concrete_Clean_2K/M_Concrete_Clean_2K_Metallic.png"
+      }
+    },
+    {
+      "name": "M_Asphalt_Clean_2K",
+      "resolution": [
+        2048,
+        2048
+      ],
+      "maps": {
+        "basecolor": "M_Asphalt_Clean_2K/M_Asphalt_Clean_2K_BaseColor.png",
+        "normal": "M_Asphalt_Clean_2K/M_Asphalt_Clean_2K_Normal.png",
+        "roughness": "M_Asphalt_Clean_2K/M_Asphalt_Clean_2K_Roughness.png",
+        "metallic": "M_Asphalt_Clean_2K/M_Asphalt_Clean_2K_Metallic.png"
+      }
+    },
+    {
+      "name": "M_Yilan_GreenSteel_2K",
+      "resolution": [
+        2048,
+        2048
+      ],
+      "maps": {
+        "basecolor": "M_Yilan_GreenSteel_2K/M_Yilan_GreenSteel_2K_BaseColor.png",
+        "normal": "M_Yilan_GreenSteel_2K/M_Yilan_GreenSteel_2K_Normal.png",
+        "roughness": "M_Yilan_GreenSteel_2K/M_Yilan_GreenSteel_2K_Roughness.png",
+        "metallic": "M_Yilan_GreenSteel_2K/M_Yilan_GreenSteel_2K_Metallic.png"
+      }
+    },
+    {
+      "name": "M_CedarTimber_2K",
+      "resolution": [
+        2048,
+        2048
+      ],
+      "maps": {
+        "basecolor": "M_CedarTimber_2K/M_CedarTimber_2K_BaseColor.png",
+        "normal": "M_CedarTimber_2K/M_CedarTimber_2K_Normal.png",
+        "roughness": "M_CedarTimber_2K/M_CedarTimber_2K_Roughness.png",
+        "metallic": "M_CedarTimber_2K/M_CedarTimber_2K_Metallic.png"
+      }
+    },
+    {
+      "name": "M_Asphalt_Pro_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "basecolor": "M_Asphalt_Pro_4K/M_Asphalt_Pro_4K_BaseColor.png",
+        "normal": "M_Asphalt_Pro_4K/M_Asphalt_Pro_4K_Normal.png",
+        "roughness": "M_Asphalt_Pro_4K/M_Asphalt_Pro_4K_Roughness.png",
+        "metallic": "M_Asphalt_Pro_4K/M_Asphalt_Pro_4K_Metallic.png"
+      },
+      "notes": "local procedural PBR source; material texture only, no screen-space grain"
+    },
+    {
+      "name": "M_Yilan_StationPaint_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "basecolor": "M_Yilan_StationPaint_4K/M_Yilan_StationPaint_4K_BaseColor.png",
+        "normal": "M_Yilan_StationPaint_4K/M_Yilan_StationPaint_4K_Normal.png",
+        "roughness": "M_Yilan_StationPaint_4K/M_Yilan_StationPaint_4K_Roughness.png",
+        "metallic": "M_Yilan_StationPaint_4K/M_Yilan_StationPaint_4K_Metallic.png"
+      },
+      "notes": "local procedural PBR source; material texture only, no screen-space grain"
+    },
+    {
+      "name": "M_Yilan_AgedBrick_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "basecolor": "M_Yilan_AgedBrick_4K/M_Yilan_AgedBrick_4K_BaseColor.png",
+        "normal": "M_Yilan_AgedBrick_4K/M_Yilan_AgedBrick_4K_Normal.png",
+        "roughness": "M_Yilan_AgedBrick_4K/M_Yilan_AgedBrick_4K_Roughness.png",
+        "metallic": "M_Yilan_AgedBrick_4K/M_Yilan_AgedBrick_4K_Metallic.png"
+      },
+      "notes": "local procedural PBR source; material texture only, no screen-space grain"
+    }
+  ]
+}

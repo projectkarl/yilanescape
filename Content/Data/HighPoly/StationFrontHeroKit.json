@@ -1,0 +1,29 @@
+{
+  "version": "2.3",
+  "purpose": "Art-review assembly recipe for the Yilan Station / Jimmy Square vertical slice. This is not geospatial placement data; final actor transforms must be locked against the authoritative world reference and photo-match QA.",
+  "hero_assets": [
+    "SM_Yilan_Station_Facade_Hero_HQ",
+    "SM_Yilan_Diudiudang_SteelTree_14m_HQ",
+    "SM_Yilan_Diudiudang_SuspendedTrain_HQ"
+  ],
+  "support_assets": [
+    "SM_Yilan_Arcade_3Storey_8m_HQ",
+    "SM_Yilan_CornerStore_Glass_HQ",
+    "SM_Taiwan_Scooter_Parked_Triple_HQ",
+    "SM_Taiwan_PedestrianSignal_HQ",
+    "SM_Taiwan_BusStopPole_HQ",
+    "SM_Yilan_StreetTree_Planter_HQ",
+    "SM_Taiwan_Crosswalk_StopLine_5m_HQ",
+    "SM_Yilan_StreetLight_8m_HQ",
+    "SM_Yilan_TrafficSignal_Mast_HQ",
+    "SM_Yilan_UtilityPole_HQ"
+  ],
+  "quality_gate": {
+    "screen_space_grain": false,
+    "fake_dof_to_hide_assets": false,
+    "hero_building_requires_photo_match": true,
+    "hero_landmark_requires_manual_scale_check": true,
+    "pbr_minimum": "2K support / 4K hero",
+    "nanite_for_static_hero_meshes": true
+  }
+}
