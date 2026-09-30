@@ -1,4 +1,4 @@
-"""YILAN // REDLINE v2.3 - Unreal Editor Python importer.
+"""YILAN // REDLINE v2.4 - Unreal Editor Python importer.
 Run inside UE5 Editor (Tools > Execute Python Script).
 Imports GLB source assets and 2K/4K PBR texture sets, then enables Nanite where the manifest requests it.
 """
@@ -133,9 +133,9 @@ def import_meshes():
 
 
 if __name__ == '__main__':
-    unreal.log('YILAN v2.3 high-poly import started')
+    unreal.log('YILAN v2.4 high-poly import started')
     textures=import_all_textures()
     materials=create_pbr_materials(textures)
     meshes=import_meshes()
     unreal.log(f'Imported mesh objects: {len(meshes)}; materials: {len(materials)}; textures: {len(textures)}')
-    unreal.log('YILAN v2.3 high-poly import finished')
+    unreal.log('YILAN v2.4 high-poly import finished')

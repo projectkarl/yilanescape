@@ -1,0 +1,39 @@
+{
+  "version": "2.4",
+  "last_checked": "2026-09-30",
+  "sources": [
+    {
+      "name": "TRA Yilan Station",
+      "url": "https://www.railway.gov.tw/tra-tip-web/tip/tip00H/tipH41/viewStaInfo/7190",
+      "facts": [
+        "official station address: Yilan City, Guangfu Road No. 1"
+      ]
+    },
+    {
+      "name": "TRA Yilan transfer guide",
+      "url": "https://www.railway.gov.tw/tra-tip-web/tip/tip00H/tipH41/viewTransfer/7190",
+      "facts": [
+        "front-station taxi waiting area at Guangfu Road No. 1",
+        "city-bus transfer context on Guangfu Road"
+      ]
+    },
+    {
+      "name": "Yilan Tourism — Jimmy Square / Diudiudang Forest",
+      "url": "https://travel.yilan.gov.tw/zh-tw/attraction/232/",
+      "facts": [
+        "station-adjacent art precinct",
+        "nine steel trees about 14 m high",
+        "suspended green train installation"
+      ]
+    },
+    {
+      "name": "Yilan Tourism — cultural trip / Yilan Xingkou",
+      "url": "https://travel.yilan.gov.tw/zh-tw/tour/3/",
+      "facts": [
+        "Yilan Xingkou station-area warehouse context dates to 1919",
+        "historic architectural character retained/rebuilt for cultural use"
+      ]
+    }
+  ],
+  "policy": "Google Maps/Street View may be used for visual cross-checking only where licensing permits; imagery is not copied into project textures."
+}

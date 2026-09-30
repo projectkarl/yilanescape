@@ -1,26 +1,30 @@
-# YILAN // REDLINE v2.3 — High-Poly Station District Build
+# YILAN // REDLINE v2.4 — Station Fidelity Upgrade
 
-This UE5 production package continues the formal high-fidelity line. v2.3 adds a station-district asset layer instead of another visual-effects pass.
+This package continues the formal UE5 high-fidelity production line. v2.4 focuses on the Yilan Station forecourt, station-area mobility, street frontage and close-range streetscape quality instead of adding more screen-space effects.
 
 ## Physically included
-- **36 importable GLB source assets** in `Content/SourceAssets/HighPoly/`.
-- **436,178 source triangles** across the catalog.
-- **9 local PBR material sets**: 6×2K support materials plus 3×4K hero materials.
-- A new high-detail Yilan Station facade reference mesh, station-front arcade/shop modules, parked scooter cluster, pedestrian signal, bus-stop pole, street tree/planter and clean crosswalk/stop-line kit.
-- A new Diudiudang suspended-train landmark proxy plus the existing nine-instance 14 m steel-tree module.
-- Xueshan/freeway additions: visible south-portal visual module, tunnel light rail and double barrier.
-- UE5 Python importer updated for 2K/4K textures, Nanite and first-pass `material_hint` assignment.
-- `StationFrontHeroKit.json` defines the asset set and a no-grain/photo-match quality gate for the station vertical slice.
+- **50 importable GLB source assets** in `Content/SourceAssets/HighPoly/`.
+- **651,054 source triangles** across the catalog.
+- **13 local PBR material sets**, including 7 hero 4K sets and 6 support 2K sets.
+- New station-front plaza canopy, taxi shelter, Xingkou warehouse reference mesh, 5-storey arcade block, station planter/bench and signage kits.
+- New high-detail unbranded Taiwan-style hero scooter, city bus and taxi visual meshes.
+- New double-arm streetlight, tactile paving, storm drain and road-arrow kits for close-up street fidelity.
+- New publicly-visible Xueshan tunnel ceiling-service visual module. Restricted operational/security layout is not modeled.
+- `StationDistrictAssemblyV24.json` defines the v2.4 hero/support set and quality gate.
 
-## New v2.3 hero-quality materials
-- `M_Asphalt_Pro_4K`
-- `M_Yilan_StationPaint_4K`
-- `M_Yilan_AgedBrick_4K`
+## Reality baseline
+- Yilan Station is locked to the official station context at Guangfu Road No. 1.
+- The station-front taxi waiting area is part of the official transfer context and is represented as a scene module.
+- Diudiudang Forest / Jimmy Square remains a station-adjacent hero zone. The nine ~14 m steel-tree structure and suspended train remain photo-match-gated.
+- The historic Yilan Xingkou station-front warehouse context is represented with a dedicated hero reference mesh; shipping geometry still requires current-site photo matching.
 
-All three are **4096×4096 BaseColor / Normal / Roughness / Metallic** asset textures. They do not add screen-space film grain.
-
-## Reality rule
-High polygon count alone does not make a real landmark accurate. The Yilan Station and Diudiudang meshes are reference-locked production meshes, **not photogrammetry**. Final shipping placement/proportions still require current-site photo matching and authoritative map alignment. Generic arcade/store modules must never replace a named hero building.
+## Quality gate
+- No screen-space film grain.
+- No dense fog or depth-of-field used to hide mesh quality.
+- Named hero landmarks cannot be replaced by generic procedural buildings.
+- Hero static meshes use Nanite where appropriate.
+- Hero vehicle GLBs are visual meshes only until Chaos/skeletal rigs are authored.
+- Final shipping landmark placement requires authoritative map alignment and current-site photo review.
 
 ## Validation
 ```bash
@@ -28,6 +32,6 @@ python Scripts/validate_world_reference.py
 python Scripts/validate_highpoly_assets.py
 ```
 
-Then inside UE5 run `Scripts/UE5/import_highpoly_assets.py`.
+Then in Unreal Editor run `Scripts/UE5/import_highpoly_assets.py`.
 
-See `Docs/HIGH_POLY_ASSET_CATALOG.md`, `Docs/V23_REFERENCE_NOTES.md`, `Docs/REALISM_GATE.md` and `Content/Data/HighPoly/StationFrontHeroKit.json`.
+See `Docs/V24_STATION_FIDELITY.md`, `Docs/HIGH_POLY_ASSET_CATALOG.md`, `Docs/REALISM_GATE.md` and `Content/Data/HighPoly/StationDistrictAssemblyV24.json`.

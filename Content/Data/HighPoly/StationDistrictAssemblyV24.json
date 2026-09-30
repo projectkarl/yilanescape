@@ -1,0 +1,42 @@
+{
+  "version": "2.4",
+  "purpose": "High-fidelity assembly recipe for Yilan Station forecourt / Diudiudang / Xingkou vertical slice. Local transforms are art-review placeholders, not geospatial truth.",
+  "source_facts": [
+    "Yilan Station official address: No. 1, Guangfu Rd., Yilan City.",
+    "TRA lists a front-station taxi waiting area at Guangfu Rd. 1.",
+    "Diudiudang Forest/Jimmy Square sits opposite/south of the station and uses nine ~14 m steel trees plus suspended train artwork.",
+    "Yilan Xingkou is a historic station-front warehouse context dating to 1919; final hero mesh requires current-site photo match."
+  ],
+  "hero_assets": [
+    "SM_Yilan_Station_Facade_Hero_HQ",
+    "SM_Yilan_Station_PlazaCanopy_HQ",
+    "SM_Yilan_Xingkou_1919_Warehouse_HQ",
+    "SM_Yilan_Diudiudang_SteelTree_14m_HQ",
+    "SM_Yilan_Diudiudang_SuspendedTrain_HQ"
+  ],
+  "mobility_assets": [
+    "SM_Taiwan_HeroScooter_2026_HQ",
+    "SM_Taiwan_CityBus_Hero_HQ",
+    "SM_Taiwan_TaxiSedan_Hero_HQ"
+  ],
+  "support_assets": [
+    "SM_Yilan_Station_TaxiCanopy_HQ",
+    "SM_Yilan_Arcade_5Storey_10m_HQ",
+    "SM_Taiwan_StreetLamp_DoubleArm_HQ",
+    "SM_Taiwan_TactilePaving_Corner_HQ",
+    "SM_Taiwan_StormDrain_Linear_2m_HQ",
+    "SM_Taiwan_RoadArrowKit_HQ",
+    "SM_Yilan_Station_PlanterBench_HQ",
+    "SM_Yilan_StationFront_SignageKit_HQ"
+  ],
+  "quality_gate": {
+    "screen_space_grain": false,
+    "full_scene_fog_to_hide_assets": false,
+    "fake_dof_to_hide_assets": false,
+    "hero_building_requires_photo_match": true,
+    "hero_landmark_requires_current_site_reference": true,
+    "pbr_minimum": "4K hero / 2K support",
+    "nanite_for_static_hero_meshes": true,
+    "vehicle_visual_mesh_not_equal_gameplay_rig": true
+  }
+}

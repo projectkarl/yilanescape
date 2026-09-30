@@ -1,7 +1,7 @@
 {
   "FileVersion": 3,
   "Category": "Games",
-  "Description": "YILAN // REDLINE v2.3 high-fidelity UE5 station-district production project with 36 importable high-poly GLB sources, 2K/4K PBR materials and reality-locked Yilan art workflow.",
+  "Description": "YILAN // REDLINE v2.4 UE5 high-fidelity station-forecourt production project with 50 importable high-poly GLB sources, 13 PBR sets and reality-locked Yilan art workflow.",
   "Modules": [
     {
       "Name": "YilanRedline",

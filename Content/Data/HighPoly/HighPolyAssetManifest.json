@@ -1,5 +1,5 @@
 {
-  "version": "2.3",
+  "version": "2.4",
   "units": "meters",
   "coordinate_system": "source assets use Z-up; verify Interchange conversion on import",
   "assets": [
@@ -498,9 +498,215 @@
       "source_basis": "Official Yilan tourism: suspended green flying-train artwork at Diudiudang Forest/Jimmy Square.",
       "qa_tier": "hero_manual_qa",
       "notes": "High-detail artwork proxy; final placement/proportions require photo-matched art QA."
+    },
+    {
+      "file": "SM_Yilan_Station_PlazaCanopy_HQ.glb",
+      "asset": "SM_Yilan_Station_PlazaCanopy_HQ",
+      "triangles": 9264,
+      "vertices": 4778,
+      "real_scale_m": [
+        26.0,
+        14.0,
+        6.69
+      ],
+      "category": "landmark_structure",
+      "nanite": true,
+      "notes": "station-front structural/roof proxy; final footprint/orientation requires site photo-match",
+      "material_hint": "M_Concrete_Clean_2K"
+    },
+    {
+      "file": "SM_Yilan_Station_TaxiCanopy_HQ.glb",
+      "asset": "SM_Yilan_Station_TaxiCanopy_HQ",
+      "triangles": 3288,
+      "vertices": 1710,
+      "real_scale_m": [
+        22.0,
+        3.4,
+        3.69
+      ],
+      "category": "street_furniture",
+      "nanite": true,
+      "notes": "front-station taxi shelter visual module",
+      "material_hint": "M_BrushedMetal_Clean_4K"
+    },
+    {
+      "file": "SM_Yilan_Xingkou_1919_Warehouse_HQ.glb",
+      "asset": "SM_Yilan_Xingkou_1919_Warehouse_HQ",
+      "triangles": 1572,
+      "vertices": 1020,
+      "real_scale_m": [
+        24.0,
+        11.38,
+        8.17
+      ],
+      "category": "landmark_architecture",
+      "nanite": true,
+      "notes": "historic station-area warehouse reference mesh; final shipping requires current facade photo-match",
+      "material_hint": "M_Yilan_AgedBrick_4K"
+    },
+    {
+      "file": "SM_Yilan_Arcade_5Storey_10m_HQ.glb",
+      "asset": "SM_Yilan_Arcade_5Storey_10m_HQ",
+      "triangles": 20420,
+      "vertices": 10516,
+      "real_scale_m": [
+        10.78,
+        14.11,
+        18.8
+      ],
+      "category": "architecture",
+      "nanite": true,
+      "notes": "Yilan/Taiwan arcade building style module; not a substitute for named hero buildings",
+      "material_hint": "M_Taiwan_CreamTile_2K"
+    },
+    {
+      "file": "SM_Taiwan_HeroScooter_2026_HQ.glb",
+      "asset": "SM_Taiwan_HeroScooter_2026_HQ",
+      "triangles": 49516,
+      "vertices": 24794,
+      "real_scale_m": [
+        1.03,
+        1.59,
+        1.68
+      ],
+      "category": "vehicle_hero",
+      "nanite": false,
+      "notes": "high-detail static/visual scooter; drivable variant requires skeletal/Chaos rig"
+    },
+    {
+      "file": "SM_Taiwan_CityBus_Hero_HQ.glb",
+      "asset": "SM_Taiwan_CityBus_Hero_HQ",
+      "triangles": 52204,
+      "vertices": 26188,
+      "real_scale_m": [
+        12.15,
+        3.2,
+        3.83
+      ],
+      "category": "vehicle_hero",
+      "nanite": false,
+      "notes": "high-detail unbranded city-bus visual mesh; driving/door rig not included"
+    },
+    {
+      "file": "SM_Taiwan_TaxiSedan_Hero_HQ.glb",
+      "asset": "SM_Taiwan_TaxiSedan_Hero_HQ",
+      "triangles": 66960,
+      "vertices": 33528,
+      "real_scale_m": [
+        4.48,
+        2.21,
+        2.05
+      ],
+      "category": "vehicle_hero",
+      "nanite": false,
+      "notes": "high-detail unbranded taxi visual mesh; gameplay rig not included"
+    },
+    {
+      "file": "SM_Taiwan_StreetLamp_DoubleArm_HQ.glb",
+      "asset": "SM_Taiwan_StreetLamp_DoubleArm_HQ",
+      "triangles": 508,
+      "vertices": 270,
+      "real_scale_m": [
+        6.25,
+        0.59,
+        8.6
+      ],
+      "category": "street_furniture",
+      "nanite": true,
+      "notes": "double-arm urban streetlight variant"
+    },
+    {
+      "file": "SM_Taiwan_TactilePaving_Corner_HQ.glb",
+      "asset": "SM_Taiwan_TactilePaving_Corner_HQ",
+      "triangles": 3900,
+      "vertices": 2120,
+      "real_scale_m": [
+        4.0,
+        4.0,
+        0.11
+      ],
+      "category": "road",
+      "nanite": true,
+      "notes": "clean tactile-paving corner module",
+      "material_hint": "M_Taiwan_ConcretePaver_4K"
+    },
+    {
+      "file": "SM_Taiwan_StormDrain_Linear_2m_HQ.glb",
+      "asset": "SM_Taiwan_StormDrain_Linear_2m_HQ",
+      "triangles": 264,
+      "vertices": 176,
+      "real_scale_m": [
+        2.2,
+        0.55,
+        0.17
+      ],
+      "category": "road",
+      "nanite": true,
+      "notes": "linear storm-drain/grate detail",
+      "material_hint": "M_BrushedMetal_Clean_4K"
+    },
+    {
+      "file": "SM_Taiwan_RoadArrowKit_HQ.glb",
+      "asset": "SM_Taiwan_RoadArrowKit_HQ",
+      "triangles": 60,
+      "vertices": 42,
+      "real_scale_m": [
+        6.1,
+        2.55,
+        0.02
+      ],
+      "category": "road",
+      "nanite": true,
+      "notes": "clean road-marking arrow geometry; production may use decals",
+      "material_hint": "M_Taiwan_RoadMarking_4K"
+    },
+    {
+      "file": "SM_Yilan_Station_PlanterBench_HQ.glb",
+      "asset": "SM_Yilan_Station_PlanterBench_HQ",
+      "triangles": 5336,
+      "vertices": 2690,
+      "real_scale_m": [
+        2.6,
+        1.87,
+        3.69
+      ],
+      "category": "street_furniture",
+      "nanite": true,
+      "notes": "station/plaza planter-bench landscape module",
+      "material_hint": "M_Concrete_Clean_2K"
+    },
+    {
+      "file": "SM_Yilan_StationFront_SignageKit_HQ.glb",
+      "asset": "SM_Yilan_StationFront_SignageKit_HQ",
+      "triangles": 480,
+      "vertices": 264,
+      "real_scale_m": [
+        5.95,
+        0.28,
+        3.0
+      ],
+      "category": "street_furniture",
+      "nanite": true,
+      "notes": "sign bodies only; final text/branding requires current-site reference and rights review",
+      "material_hint": "M_BrushedMetal_Clean_4K"
+    },
+    {
+      "file": "SM_Xueshan_Tunnel_CeilingServices_12m_HQ.glb",
+      "asset": "SM_Xueshan_Tunnel_CeilingServices_12m_HQ",
+      "triangles": 1104,
+      "vertices": 596,
+      "real_scale_m": [
+        5.9,
+        12.0,
+        1.03
+      ],
+      "category": "tunnel_visual",
+      "nanite": true,
+      "notes": "generic publicly visible lighting/service visual module; no restricted operational layout",
+      "material_hint": "M_BrushedMetal_Clean_4K"
     }
   ],
-  "asset_count": 36,
-  "total_triangles": 436178,
-  "total_vertices": 221655
+  "asset_count": 50,
+  "total_triangles": 651054,
+  "total_vertices": 330347
 }

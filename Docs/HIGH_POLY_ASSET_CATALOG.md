@@ -1,43 +1,41 @@
-# High-poly asset catalog — v2.3
+# High-poly asset catalog — v2.4
 
-Total source catalog: **36 GLB assets / 436,178 triangles**.
+Total source catalog: **50 GLB assets / 651,054 triangles**.
 
-## v2.3 station-district additions
-- `SM_Yilan_Station_Facade_Hero_HQ` — 15,730 triangles; [31.0, 6.25, 12.22] m. Official Yilan tourism station imagery/description: Jimmy-themed painted station facade with smiling giraffe; geometry is a high-detail reference model, not photogrammetry.
-- `SM_Yilan_Arcade_3Storey_8m_HQ` — 8,728 triangles; [8.82, 11.6, 12.61] m. Taiwan/Yilan arcade mid-rise kit; style module only, not a substitute for a named hero building.
-- `SM_Yilan_CornerStore_Glass_HQ` — 2,168 triangles; [8.32, 7.28, 4.93] m. Corner storefront module with wrapped glazing, shutter, awning and rooftop service detail.
-- `SM_Taiwan_Scooter_Parked_Triple_HQ` — 25,020 triangles; [2.5, 1.53, 1.48] m. Parked scooter cluster for streetscape density; drivable scooters require skeletal/Chaos rig.
-- `SM_Taiwan_PedestrianSignal_HQ` — 560 triangles; [0.48, 0.52, 3.4] m. Pedestrian signal/push-button visual prop; signal behavior supplied by gameplay logic.
-- `SM_Taiwan_BusStopPole_HQ` — 388 triangles; [0.55, 0.38, 3.42] m. Taiwan-style bus stop pole visual kit.
-- `SM_Yilan_StreetTree_Planter_HQ` — 8,376 triangles; [3.6, 2.65, 5.9] m. Street tree/planter hero prop; replace foliage clusters with SpeedTree/foliage cards for final runtime optimization.
-- `SM_Taiwan_Crosswalk_StopLine_5m_HQ` — 132 triangles; [5.5, 5.4, 0.02] m. Geometry marking kit; use decal/material variant in production where appropriate.
-- `SM_Xueshan_SouthPortal_Visual_HQ` — 1,252 triangles; [26.9, 14.0, 8.42] m. Publicly visible tunnel-portal visual module only; does not encode restricted operational/rescue infrastructure.
-- `SM_Xueshan_Tunnel_LightRail_9m_HQ` — 356 triangles; [9.2, 0.44, 1.0] m. Generic visible tunnel-light rail module.
-- `SM_Taiwan_Freeway_DoubleBarrier_8m_HQ` — 1,092 triangles; [8.0, 0.87, 1.1] m. Double-side freeway barrier module.
-- `SM_Yilan_Diudiudang_SuspendedTrain_HQ` — 13,352 triangles; [9.02, 2.65, 5.36] m. High-detail artwork proxy; final placement/proportions require photo-matched art QA.
+## v2.4 station-fidelity additions
+- `SM_Yilan_Station_PlazaCanopy_HQ` — 9,264 triangles; scale [26.0, 14.0, 6.69] m. station-front structural/roof proxy; final footprint/orientation requires site photo-match
+- `SM_Yilan_Station_TaxiCanopy_HQ` — 3,288 triangles; scale [22.0, 3.4, 3.69] m. front-station taxi shelter visual module
+- `SM_Yilan_Xingkou_1919_Warehouse_HQ` — 1,572 triangles; scale [24.0, 11.38, 8.17] m. historic station-area warehouse reference mesh; final shipping requires current facade photo-match
+- `SM_Yilan_Arcade_5Storey_10m_HQ` — 20,420 triangles; scale [10.78, 14.11, 18.8] m. Yilan/Taiwan arcade building style module; not a substitute for named hero buildings
+- `SM_Taiwan_HeroScooter_2026_HQ` — 49,516 triangles; scale [1.03, 1.59, 1.68] m. high-detail static/visual scooter; drivable variant requires skeletal/Chaos rig
+- `SM_Taiwan_CityBus_Hero_HQ` — 52,204 triangles; scale [12.15, 3.2, 3.83] m. high-detail unbranded city-bus visual mesh; driving/door rig not included
+- `SM_Taiwan_TaxiSedan_Hero_HQ` — 66,960 triangles; scale [4.48, 2.21, 2.05] m. high-detail unbranded taxi visual mesh; gameplay rig not included
+- `SM_Taiwan_StreetLamp_DoubleArm_HQ` — 508 triangles; scale [6.25, 0.59, 8.6] m. double-arm urban streetlight variant
+- `SM_Taiwan_TactilePaving_Corner_HQ` — 3,900 triangles; scale [4.0, 4.0, 0.11] m. clean tactile-paving corner module
+- `SM_Taiwan_StormDrain_Linear_2m_HQ` — 264 triangles; scale [2.2, 0.55, 0.17] m. linear storm-drain/grate detail
+- `SM_Taiwan_RoadArrowKit_HQ` — 60 triangles; scale [6.1, 2.55, 0.02] m. clean road-marking arrow geometry; production may use decals
+- `SM_Yilan_Station_PlanterBench_HQ` — 5,336 triangles; scale [2.6, 1.87, 3.69] m. station/plaza planter-bench landscape module
+- `SM_Yilan_StationFront_SignageKit_HQ` — 480 triangles; scale [5.95, 0.28, 3.0] m. sign bodies only; final text/branding requires current-site reference and rights review
+- `SM_Xueshan_Tunnel_CeilingServices_12m_HQ` — 1,104 triangles; scale [5.9, 12.0, 1.03] m. generic publicly visible lighting/service visual module; no restricted operational layout
 
-## Existing hero / vehicle assets
-- `SM_Redline_HeroSupercar_HQ` — original unbranded hero-supercar visual mesh.
-- `SM_Redline_ApexGT_Hero_HQ` — original unbranded hero GT visual mesh.
-- `SM_Yilan_Scooter_HQ` — Taiwan-style scooter visual mesh.
-- `SM_Pedestrian_CrowdProxy_HQ` — medium-distance crowd proxy only; hero pedestrians must use a skeletal high-quality character pipeline.
+## Material library
+Total: **13 PBR sets**.
 
-## Yilan landmark kit
-- `SM_Yilan_Diudiudang_SteelTree_14m_HQ` — 14 m structural-tree module; use nine instances only after layout QA.
-- `SM_Yilan_Diudiudang_SuspendedTrain_HQ` — suspended green-train artwork proxy added in v2.3.
-- `SM_Yilan_Distillery_RedBrickWarehouseFacade_HQ` — distillery red-brick industrial facade module.
-- `SM_Yilan_Historic_Wayo_Facade_HQ` — historic-district style module; not a claimed 1:1 named building.
+### New v2.4 4K materials
+- `M_Taiwan_ConcretePaver_4K`
+- `M_Taiwan_RoadMarking_4K`
+- `M_Yilan_WarehousePlaster_4K`
+- `M_BrushedMetal_Clean_4K`
 
-## PBR library
-- `M_Yilan_RedBrick_2K` — 2048×2048, BaseColor/Normal/Roughness/Metallic
-- `M_Taiwan_CreamTile_2K` — 2048×2048, BaseColor/Normal/Roughness/Metallic
-- `M_Concrete_Clean_2K` — 2048×2048, BaseColor/Normal/Roughness/Metallic
-- `M_Asphalt_Clean_2K` — 2048×2048, BaseColor/Normal/Roughness/Metallic
-- `M_Yilan_GreenSteel_2K` — 2048×2048, BaseColor/Normal/Roughness/Metallic
-- `M_CedarTimber_2K` — 2048×2048, BaseColor/Normal/Roughness/Metallic
-- `M_Asphalt_Pro_4K` — 4096×4096, BaseColor/Normal/Roughness/Metallic
-- `M_Yilan_StationPaint_4K` — 4096×4096, BaseColor/Normal/Roughness/Metallic
-- `M_Yilan_AgedBrick_4K` — 4096×4096, BaseColor/Normal/Roughness/Metallic
+These are asset-space PBR textures. They do not add full-screen grain.
+
+## Existing hero assets retained
+- `SM_Yilan_Station_Facade_Hero_HQ`
+- `SM_Yilan_Diudiudang_SteelTree_14m_HQ`
+- `SM_Yilan_Diudiudang_SuspendedTrain_HQ`
+- `SM_Yilan_Distillery_RedBrickWarehouseFacade_HQ`
+- `SM_Redline_HeroSupercar_HQ`
+- `SM_Redline_ApexGT_Hero_HQ`
 
 ## Production rule
-No full-screen grain, fake depth-of-field blur or dense fog may be used to hide asset quality. Named hero landmarks require photo-match QA.
+Named landmarks require current-site photo-match QA. Generic arcade/store modules can fill non-hero frontage only after footprint and facade-style checks.

@@ -1,5 +1,5 @@
 {
-  "version": "2.3",
+  "version": "2.4",
   "materials": [
     {
       "name": "M_Yilan_RedBrick_2K",
@@ -120,6 +120,62 @@
         "metallic": "M_Yilan_AgedBrick_4K/M_Yilan_AgedBrick_4K_Metallic.png"
       },
       "notes": "local procedural PBR source; material texture only, no screen-space grain"
+    },
+    {
+      "name": "M_Taiwan_ConcretePaver_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "basecolor": "M_Taiwan_ConcretePaver_4K/M_Taiwan_ConcretePaver_4K_BaseColor.png",
+        "normal": "M_Taiwan_ConcretePaver_4K/M_Taiwan_ConcretePaver_4K_Normal.png",
+        "roughness": "M_Taiwan_ConcretePaver_4K/M_Taiwan_ConcretePaver_4K_Roughness.png",
+        "metallic": "M_Taiwan_ConcretePaver_4K/M_Taiwan_ConcretePaver_4K_Metallic.png"
+      },
+      "notes": "clean 4K asset-space PBR; no screen-space grain"
+    },
+    {
+      "name": "M_Taiwan_RoadMarking_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "basecolor": "M_Taiwan_RoadMarking_4K/M_Taiwan_RoadMarking_4K_BaseColor.png",
+        "normal": "M_Taiwan_RoadMarking_4K/M_Taiwan_RoadMarking_4K_Normal.png",
+        "roughness": "M_Taiwan_RoadMarking_4K/M_Taiwan_RoadMarking_4K_Roughness.png",
+        "metallic": "M_Taiwan_RoadMarking_4K/M_Taiwan_RoadMarking_4K_Metallic.png"
+      },
+      "notes": "clean 4K asset-space PBR; no screen-space grain"
+    },
+    {
+      "name": "M_Yilan_WarehousePlaster_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "basecolor": "M_Yilan_WarehousePlaster_4K/M_Yilan_WarehousePlaster_4K_BaseColor.png",
+        "normal": "M_Yilan_WarehousePlaster_4K/M_Yilan_WarehousePlaster_4K_Normal.png",
+        "roughness": "M_Yilan_WarehousePlaster_4K/M_Yilan_WarehousePlaster_4K_Roughness.png",
+        "metallic": "M_Yilan_WarehousePlaster_4K/M_Yilan_WarehousePlaster_4K_Metallic.png"
+      },
+      "notes": "clean 4K asset-space PBR; no screen-space grain"
+    },
+    {
+      "name": "M_BrushedMetal_Clean_4K",
+      "resolution": [
+        4096,
+        4096
+      ],
+      "maps": {
+        "basecolor": "M_BrushedMetal_Clean_4K/M_BrushedMetal_Clean_4K_BaseColor.png",
+        "normal": "M_BrushedMetal_Clean_4K/M_BrushedMetal_Clean_4K_Normal.png",
+        "roughness": "M_BrushedMetal_Clean_4K/M_BrushedMetal_Clean_4K_Roughness.png",
+        "metallic": "M_BrushedMetal_Clean_4K/M_BrushedMetal_Clean_4K_Metallic.png"
+      },
+      "notes": "clean 4K asset-space PBR; no screen-space grain"
     }
   ]
 }
